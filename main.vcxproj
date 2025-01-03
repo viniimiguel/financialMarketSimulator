@@ -128,12 +128,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="batch.cpp" />
-    <ClCompile Include="httpRequest.cpp" />
+    <ClCompile Include="httpRequestGroq.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all.h" />
     <ClInclude Include="batch.h" />
+    <ClInclude Include="httpRequestGroq.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
