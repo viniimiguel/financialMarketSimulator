@@ -28,7 +28,7 @@ int main() {
 
         struct curl_slist* headers = nullptr;
         headers = curl_slist_append(headers, "Content-Type: application/json");
-        headers = curl_slist_append(headers, "Authorization: Bearer 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");
+        headers = curl_slist_append(headers, "Authorization: Bearer ");
 
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
         curl_easy_setopt(curl, CURLOPT_POSTFIELDS, jsonData);
