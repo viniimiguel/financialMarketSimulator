@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <string>
 #include <curl/curl.h>
 #include <nlohmann/json.hpp>
@@ -32,7 +32,7 @@ void RequestGroq::sendRequest(const std::string& prompt, std::string& response) 
 
         struct curl_slist* headers = nullptr;
         headers = curl_slist_append(headers, "Content-Type: application/json");
-        headers = curl_slist_append(headers, "Authorization: myTOKEN here");
+        headers = curl_slist_append(headers, "Authorization: Bearer YourTokenHere");
 
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
         curl_easy_setopt(curl, CURLOPT_POSTFIELDS, jsonData.c_str());
@@ -42,7 +42,7 @@ void RequestGroq::sendRequest(const std::string& prompt, std::string& response) 
         res = curl_easy_perform(curl);
 
         if (res != CURLE_OK) {
-            std::cerr << "Erro na requisição: " << curl_easy_strerror(res) << std::endl;
+            std::cerr << "Erro na requisicaoo: " << curl_easy_strerror(res) << std::endl;
         }
         else {
             try {
