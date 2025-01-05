@@ -32,7 +32,7 @@ void RequestGroq::sendRequest(const std::string& prompt, std::string& response) 
 
         struct curl_slist* headers = nullptr;
         headers = curl_slist_append(headers, "Content-Type: application/json");
-        headers = curl_slist_append(headers, "Authorization: Bearer yourGroqTokenHere");
+        headers = curl_slist_append(headers, "Authorization: Bearer YourTokenHere");
 
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
         curl_easy_setopt(curl, CURLOPT_POSTFIELDS, jsonData.c_str());
