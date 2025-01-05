@@ -1,6 +1,7 @@
-﻿  httpRequestGroq.cpp
-C:\Users\vinicius\Desktop\newgithub\alexaDaDeepweb\main\main\httpRequestGroq.cpp(45,26): warning C4566: caractere representado por nome de caractere universal (UCN) '\uFFFD' não pode ser representado na página de código atual (1252)
+﻿  currency.cpp
+  httpRequestGroq.cpp
   main.cpp
+C:\Users\vinicius\Desktop\newgithub\alexaDaDeepweb\main\main\main.cpp(12,25): warning C4244: 'argumento': conversão de 'time_t' para 'unsigned int', possível perda de dados
   Gerando Código...
   main.vcxproj -> C:\Users\vinicius\Desktop\newgithub\alexaDaDeepweb\main\x64\Debug\main.exe
   'pwsh.exe' não é reconhecido como um comando interno
