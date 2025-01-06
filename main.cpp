@@ -3,7 +3,7 @@
 #include <locale>
 #include "currency.h"
 #include "market.h"
-
+#include "events.h"
 
 int main() {
 	std::locale::global(std::locale("en_US.UTF-8"));
@@ -36,6 +36,9 @@ int main() {
 		market.updateMakert();
 		market.displayMarket();
 	}
+
+	Events events({ usd, eur });
+	events.inflation("USD");
 	
     return 0;
 }

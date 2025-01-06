@@ -2,10 +2,7 @@
 #include <vector>
 #include "currency.h"
 #include <cstdlib>
-
-
-// essa classe vai ser responsavel por gerar eventos aleatorios de crise no mercado financeiro
-// estudar sobre eventos que acontecem no mercado de finanças
+#include <iostream>
 
 class Events
 {

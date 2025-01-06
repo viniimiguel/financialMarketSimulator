@@ -11,7 +11,10 @@ void Events::inflation(std::string& currencyName)
 			currency.setSupply(newSupply);
 
 			double newValue = currency.getDemand() / newSupply;
+			currency.setValue(newValue);
 
+			std::cout << "Currency" << currencyName << "updated after inflation" << std::endl;
+			std::cout << "new supply:" << newSupply << ", new value:" << newValue << std::endl;
 
 		}
 	}
