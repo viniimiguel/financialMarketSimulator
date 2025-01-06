@@ -128,12 +128,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="currency.cpp" />
+    <ClCompile Include="events.cpp" />
     <ClCompile Include="httpRequestGroq.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="market.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="currency.h" />
+    <ClInclude Include="events.h" />
     <ClInclude Include="httpRequestGroq.h" />
     <ClInclude Include="market.h" />
   </ItemGroup>
