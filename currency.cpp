@@ -40,9 +40,22 @@ void Currency::setVolatility(double volatility)
 	this->volatility = volatility;
 }
 
-void Currency::updateValue()
-{
-	double randomFactor = ((rand() % 200) - 100.0) / 1000.0;
-	value += demand / supply + randomFactor * volatility;
+void Currency::updateValue() {
+	double randomFactor = ((rand() % 200) - 100.0) / 100.0 * volatility;
+	double marketFactor = (demand - supply) / (supply + demand);
+	value *= (1 + marketFactor + randomFactor);
 	if (value < 0.01) value = 0.01;
 }
+
+
+std::string Currency::getName()
+{
+	return name;
+}
+
+void Currency::setName(std::string name)
+{
+	this->name = name;
+}
+
+

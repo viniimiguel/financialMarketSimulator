@@ -22,6 +22,7 @@ public:
 	void setSupply(double supply);
 	void setDemand(double demand);
 	void setVolatility(double volatility);
+	void setName(std::string name);
 
 	void updateValue();
 

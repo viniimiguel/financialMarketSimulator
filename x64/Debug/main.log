@@ -1,8 +1,4 @@
-﻿  currency.cpp
-  httpRequestGroq.cpp
-  main.cpp
-C:\Users\vinicius\Desktop\newgithub\alexaDaDeepweb\main\main\main.cpp(12,25): warning C4244: 'argumento': conversão de 'time_t' para 'unsigned int', possível perda de dados
-  Gerando Código...
+﻿  main.cpp
   main.vcxproj -> C:\Users\vinicius\Desktop\newgithub\alexaDaDeepweb\main\x64\Debug\main.exe
   'pwsh.exe' não é reconhecido como um comando interno
   ou externo, um programa operável ou um arquivo em lotes.
