@@ -13,4 +13,7 @@ public:
 	void inflation(const std::string& currencyName);
 	void interestRate(const std::string& currencyName);
 	void publicDebt(const std::string& currencyName);
+	void pib(const std::string& currencyName);
+	void demandShock(const std::string& currencyName);
+	void overSupply(const std::string& currencyName);
 };

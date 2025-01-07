@@ -13,12 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="GroqConsultor">
+      <UniqueIdentifier>{f6e91c5a-b8c6-4cab-874b-1ab889ceac8a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="httpRequestGroq.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
     <ClCompile Include="currency.cpp">
@@ -30,11 +30,11 @@
     <ClCompile Include="events.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
+    <ClCompile Include="httpRequestGroq.cpp">
+      <Filter>GroqConsultor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="httpRequestGroq.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
     <ClInclude Include="currency.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
@@ -43,6 +43,9 @@
     </ClInclude>
     <ClInclude Include="events.h">
       <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="httpRequestGroq.h">
+      <Filter>GroqConsultor</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

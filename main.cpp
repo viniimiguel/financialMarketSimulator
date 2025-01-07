@@ -23,9 +23,10 @@ int main() {
 	std::cout << "Value of USD after update: " << usd.getValue() << std::endl;
 
 	Events events({ usd });
-	events.inflation("USD");
-
-	events.interestRate("USD");
-	
-    return 0;
+	std::cout << usd.getDemand() << std::endl;
+	std::cout << usd.getValue() << std::endl;
+	events.demandShock("USD");
+	std::cout << usd.getDemand() << std::endl;
+	std::cout << usd.getValue() << std::endl;
+	return 0;
 }

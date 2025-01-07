@@ -40,11 +40,18 @@ void Currency::setVolatility(double volatility)
 	this->volatility = volatility;
 }
 
-void Currency::updateValue() {
-	double randomFactor = ((rand() % 200) - 100.0) / 100.0 * volatility;
-	double marketFactor = (demand - supply) / (supply + demand);
-	value *= (1 + marketFactor + randomFactor);
-	if (value < 0.01) value = 0.01;
+void Currency::updateValue()
+{
+	if(supply > 0)
+	{
+		double baseValue = demand / supply;
+		double randomFactor = ((rand() % 200) - 100) / 100.0;
+		value = baseValue * (1 + randomFactor * volatility);
+	}
+	else
+	{
+		value = 0;
+	}
 }
 
 
