@@ -22,11 +22,8 @@ int main() {
 	usd.updateValue();
 	std::cout << "Value of USD after update: " << usd.getValue() << std::endl;
 
-	Events events({ usd });
-	std::cout << usd.getDemand() << std::endl;
-	std::cout << usd.getValue() << std::endl;
+	Events events({ &usd });
 	events.demandShock("USD");
-	std::cout << usd.getDemand() << std::endl;
-	std::cout << usd.getValue() << std::endl;
+	std::cout << "Value of USD after over supply: " << usd.getValue() << std::endl;
 	return 0;
 }
