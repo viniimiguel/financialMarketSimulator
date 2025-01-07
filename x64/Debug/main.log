@@ -1,6 +1,7 @@
 ﻿  currency.cpp
   events.cpp
   main.cpp
+  market.cpp
   Gerando Código...
   main.vcxproj -> C:\Users\vinicius\Desktop\newgithub\alexaDaDeepweb\main\x64\Debug\main.exe
   'pwsh.exe' não é reconhecido como um comando interno

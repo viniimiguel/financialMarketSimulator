@@ -58,4 +58,13 @@ void Currency::setName(std::string name)
 	this->name = name;
 }
 
+std::string Currency::getGovernament()
+{
+	return governament;
+}
+
+void Currency::setGovernament(std::string governament)
+{
+	this->governament = governament;
+}
 
