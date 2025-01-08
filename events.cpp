@@ -1,4 +1,5 @@
 #include "events.h"
+#include <utility>
 
 void Events::inflation(const std::string& currencyName)
 {
@@ -36,6 +37,28 @@ void Events::interestRate(const std::string& currencyName)
 			std::cout << "Interest rate for currency " << currencyName << " is " << interestRate << std::endl;
 
 		}
+	}
+}
+void Events::publicDebt(const std::string& currencyGovernament, const std::string& currencyDebtGovernament)
+{
+	for(Currency* currency : currencies)
+	{
+		double debt = 1000;
+	}
+}
+void Events::governmentLoan(const std::string& currencyGovernment,const std::string& currencyLoanGovernment)
+{
+	for (size_t i = 0; i < currencies.size(); ++i)
+	{
+		if (i == 0)
+		{
+			double currencyGovernment = currencies[i]->getValue();
+		}
+		else if (i == 1)
+		{
+			double currencyLoanGovernment = currencies[i]->getValue();
+		}
+		
 	}
 }
 void Events::demandShock(const std::string& currencyName)
@@ -94,7 +117,4 @@ void Events::underSupply(const std::string& currencyName)
 		}
 	}
 }
-void Events::publicDebt(const std::string& currencyGovernament)
-{
-	
-}
+

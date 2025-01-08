@@ -65,13 +65,13 @@ void Currency::setName(std::string name)
 	this->name = name;
 }
 
-std::string Currency::getGovernament()
+std::string Currency::getGovernment()
 {
-	return governament;
+	return government;
 }
 
-void Currency::setGovernament(std::string governament)
+void Currency::setGovernment(std::string government)
 {
-	this->governament = governament;
+	this->government = government;
 }
 

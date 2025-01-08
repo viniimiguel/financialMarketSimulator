@@ -6,7 +6,7 @@
 class Currency
 {
 private:
-	std::string governament;
+	std::string government;
 	std::string name;
 	double value;
 	double supply;
@@ -18,14 +18,14 @@ public:
 	double getDemand();
 	double getVolatility();
 	std::string getName();
-	std::string getGovernament();
+	std::string getGovernment();
 
 	void setValue(double value);
 	void setSupply(double supply);
 	void setDemand(double demand);
 	void setVolatility(double volatility);
 	void setName(std::string name);
-	void setGovernament(std::string governament);
+	void setGovernment(std::string government);
 
 
 	void updateValue();

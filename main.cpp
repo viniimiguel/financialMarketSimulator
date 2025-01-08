@@ -10,22 +10,24 @@ int main() {
 
 	Currency usd;
 
-	usd.setGovernament("USA");
+	usd.setGovernment("USA");
 	usd.setName("USD");
 	usd.setValue(1.0);
 	usd.setSupply(100300);
 	usd.setDemand(100100);
 	usd.setVolatility(0.05);
 
-	
-	std::cout << "Initial value of USD: " << usd.getValue() << std::endl;
-	usd.updateValue();
-	std::cout << "Value of USD after update: " << usd.getValue() << std::endl;
+	Currency eur;
 
-	Events events({ &usd });
+	eur.setGovernment("EU");
+	eur.setName("EUR");
+	eur.setValue(0.8);
+	eur.setSupply(100000);
+	eur.setDemand(100000);
+	eur.setVolatility(0.05);
 
-	events.underSupply("USD");
-	std::cout << "Value of USD after demand shock: " << usd.getValue() << std::endl;
+	Events events({ &usd, &eur });
+	events.governmentLoan("USA", "EU");
 
 	return 0;
 }
