@@ -12,8 +12,10 @@ public:
 	Events(const std::vector<Currency*>& currencies) : currencies(currencies){}
 	void inflation(const std::string& currencyName);
 	void interestRate(const std::string& currencyName);
-	void publicDebt(const std::string& currencyName);
-	void pib(const std::string& currencyName);
+	void publicDebt(const std::string& currencyGovernament);
+	void pib(const std::string& currencyGovernament);
 	void demandShock(const std::string& currencyName);
+	void overDemand(const std::string& currencyName);
 	void overSupply(const std::string& currencyName);
+	void underSupply(const std::string& currencyName);
 };

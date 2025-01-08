@@ -44,27 +44,57 @@ void Events::demandShock(const std::string& currencyName)
 	{
 		if(currency->getName() == currencyName)
 		{
-			double demand = currency->getDemand();
-			double demandShock = demand * 0.1;
-			currency->setDemand(demand + demandShock);
+			double demandShock = currency->getSupply() * 0.1;
+			double newDemand = currency->getDemand() - demandShock;
+			currency->setDemand(newDemand);
 			double newValue = currency->getDemand() / currency->getSupply();
-			std::cout << "Demand shock for currency " << currencyName << " is " << demandShock << std::endl;
+			currency->setValue(newValue);
+		}
+	}
+}
+void Events::overDemand(const std::string& currencyName)
+{
+	for(Currency* currency : currencies)
+	{
+		if(currency->getName() == currencyName)
+		{
+			double overDemand = currency->getDemand() * 0.2;
+			double newDemand = currency->getDemand() + overDemand;
+			currency->setDemand(newDemand);
+			double newValue = currency->getDemand() / currency->getSupply();
+			currency->setValue(newValue);
 		}
 	}
 }
 void Events::overSupply(const std::string& currencyName) {
 	for (Currency* currency : currencies) {
 		if (currency->getName() == currencyName) {
-			double overSupply = currency->getDemand() * 0.3;
+			double overSupply = currency->getDemand() * 0.1;
 			double newSupply = currency->getSupply() + overSupply;
 			currency->setSupply(newSupply);
 			double newValue = currency->getDemand() / newSupply;
 			currency->setValue(newValue);
-
-			std::cout << "OverSupply for currency " << currencyName << ":\n"
-				<< "   Previous Supply: " << currency->getSupply() - overSupply << "\n"
-				<< "   New Supply: " << newSupply << "\n"
-				<< "   New Value: " << newValue << "\n";
 		}
 	}
+}
+void Events::underSupply(const std::string& currencyName)
+{
+	for (Currency* currency : currencies)
+	{
+		if (currency->getName() == currencyName)
+		{
+			double underSupply = currency->getDemand() * 0.1;
+			double newSupply = currency->getSupply() - underSupply;
+			if (newSupply < 0.1) {
+				newSupply = 0.1;
+			}
+			currency->setSupply(newSupply);
+			double newValue = currency->getDemand() / (newSupply + 1e-6);
+			currency->setValue(newValue);
+		}
+	}
+}
+void Events::publicDebt(const std::string& currencyGovernament)
+{
+	
 }

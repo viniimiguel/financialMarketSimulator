@@ -13,8 +13,8 @@ int main() {
 	usd.setGovernament("USA");
 	usd.setName("USD");
 	usd.setValue(1.0);
-	usd.setSupply(1000000);
-	usd.setDemand(1000000);
+	usd.setSupply(100300);
+	usd.setDemand(100100);
 	usd.setVolatility(0.05);
 
 	
@@ -23,7 +23,9 @@ int main() {
 	std::cout << "Value of USD after update: " << usd.getValue() << std::endl;
 
 	Events events({ &usd });
-	events.demandShock("USD");
-	std::cout << "Value of USD after over supply: " << usd.getValue() << std::endl;
+
+	events.underSupply("USD");
+	std::cout << "Value of USD after demand shock: " << usd.getValue() << std::endl;
+
 	return 0;
 }
