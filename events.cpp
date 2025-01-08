@@ -70,7 +70,9 @@ void Events::publicDebt(const std::string& currencyGovernment, const std::string
 	{
 		std::cerr << "Erro: Não foi possível encontrar as moedas especificadas." << std::endl;
 	}
-	double convertCurrency = NULL;
+	double convertCurrency = debt * debtCurrency->getValue() / governmentCurrency->getValue();
+	double newSupplyGovernment = governmentCurrency->getSupply() + convertCurrency;
+
 }
 void Events::governmentLoan(const std::string& currencyGovernment, const std::string& currencyLoanGovernment, double loan)
 {
