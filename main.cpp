@@ -27,7 +27,7 @@ int main() {
 	eur.setVolatility(0.05);
 
 	Events events({ &usd, &eur });
-	events.governmentLoan("USA", "EU");
+	events.governmentLoan("EU", "USA", 100);
 
 	return 0;
 }

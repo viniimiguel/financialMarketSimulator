@@ -46,20 +46,31 @@ void Events::publicDebt(const std::string& currencyGovernament, const std::strin
 		double debt = 1000;
 	}
 }
-void Events::governmentLoan(const std::string& currencyGovernment,const std::string& currencyLoanGovernment)
+void Events::governmentLoan(const std::string& currencyGovernment,const std::string& currencyLoanGovernment, double loan)
 {
-	for (size_t i = 0; i < currencies.size(); ++i)
+	Currency* governmentCurrency = nullptr;
+	Currency* loanCurrency = nullptr;
+
+	for(Currency* currency : currencies)
 	{
-		if (i == 0)
+		if(currency->getGovernment() == currencyGovernment)
 		{
-			double currencyGovernment = currencies[i]->getValue();
+			governmentCurrency = currency;
 		}
-		else if (i == 1)
+		else if(currency->getGovernment() == currencyLoanGovernment)
 		{
-			double currencyLoanGovernment = currencies[i]->getValue();
+			loanCurrency = currency;
 		}
-		
+
+		if(governmentCurrency && loanCurrency)
+		{
+			break;
+		}
 	}
+	double currencyLoanValue = loan * loanCurrency->getValue() / governmentCurrency->getValue();
+	std::cout << governmentCurrency->getValue() << std::endl;
+	std::cout << currencyLoanValue;
+
 }
 void Events::demandShock(const std::string& currencyName)
 {
@@ -72,6 +83,11 @@ void Events::demandShock(const std::string& currencyName)
 			currency->setDemand(newDemand);
 			double newValue = currency->getDemand() / currency->getSupply();
 			currency->setValue(newValue);
+			std::cout << newValue << std::endl;
+		}
+		else
+		{
+			std::cout << "Currency not found" << std::endl;
 		}
 	}
 }
