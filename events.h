@@ -3,6 +3,7 @@
 #include "currency.h"
 #include <cstdlib>
 #include <iostream>
+#include <random>
 
 class Events
 {
@@ -12,7 +13,8 @@ public:
 	Events(const std::vector<Currency*>& currencies) : currencies(currencies){}
 	void inflation(const std::string& currencyName);
 	void interestRate(const std::string& currencyName);
-	void publicDebt(const std::string& currencyGovernment, const std::string& currencyDebtGovernment);
+	// deopis tenho que adicionar uma forma de horario e data para esta simulação de eventos e divida para que seja possivel calcular o juros da divida
+	void publicDebt(const std::string& currencyGovernment, const std::string& currencyDebtGovernment, double debt);
 	void governmentLoan(const std::string& currencyGovernment,const std::string& currencyLoanGovernment, double loan);
 	void pib(const std::string& currencyGovernment);
 	void demandShock(const std::string& currencyName);

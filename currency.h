@@ -12,11 +12,13 @@ private:
 	double supply;
 	double demand;
 	double volatility;
+	double debt;
 public:
 	double getValue();
 	double getSupply();
 	double getDemand();
 	double getVolatility();
+	double getDebt();
 	std::string getName();
 	std::string getGovernment();
 
@@ -26,6 +28,7 @@ public:
 	void setVolatility(double volatility);
 	void setName(std::string name);
 	void setGovernment(std::string government);
+	void setDebt(double debt);
 
 
 	void updateValue();

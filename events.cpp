@@ -1,5 +1,5 @@
 #include "events.h"
-#include <utility>
+
 
 void Events::inflation(const std::string& currencyName)
 {
@@ -39,38 +39,79 @@ void Events::interestRate(const std::string& currencyName)
 		}
 	}
 }
-void Events::publicDebt(const std::string& currencyGovernament, const std::string& currencyDebtGovernament)
+void Events::publicDebt(const std::string& currencyGovernment, const std::string& currencyDebtGovernment, double debt)
 {
-	for(Currency* currency : currencies)
-	{
-		double debt = 1000;
-	}
-}
-void Events::governmentLoan(const std::string& currencyGovernment,const std::string& currencyLoanGovernment, double loan)
-{
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_real_distribution<> dis(0.05, 1.4);
+
+	double randomFees = dis(gen);
 	Currency* governmentCurrency = nullptr;
-	Currency* loanCurrency = nullptr;
+	Currency* debtCurrency = nullptr;
 
 	for(Currency* currency : currencies)
 	{
+		
+
 		if(currency->getGovernment() == currencyGovernment)
 		{
 			governmentCurrency = currency;
 		}
-		else if(currency->getGovernment() == currencyLoanGovernment)
+		else if (currency->getGovernment() == currencyDebtGovernment)
 		{
-			loanCurrency = currency;
+			debtCurrency = currency;
 		}
-
-		if(governmentCurrency && loanCurrency)
+		if(governmentCurrency && debtCurrency)
 		{
 			break;
 		}
 	}
-	double currencyLoanValue = loan * loanCurrency->getValue() / governmentCurrency->getValue();
-	std::cout << governmentCurrency->getValue() << std::endl;
-	std::cout << currencyLoanValue;
+	if(!governmentCurrency || !debtCurrency)
+	{
+		std::cerr << "Erro: Não foi possível encontrar as moedas especificadas." << std::endl;
+	}
+	double convertCurrency = NULL;
+}
+void Events::governmentLoan(const std::string& currencyGovernment, const std::string& currencyLoanGovernment, double loan)
+{
+	Currency* governmentCurrency = nullptr;
+	Currency* loanCurrency = nullptr;
 
+	for (Currency* currency : currencies)
+	{
+		if (currency->getGovernment() == currencyGovernment)
+		{
+			governmentCurrency = currency;
+		}
+		else if (currency->getGovernment() == currencyLoanGovernment)
+		{
+			loanCurrency = currency;
+		}
+
+		if (governmentCurrency && loanCurrency)
+		{
+			break;
+		}
+	}
+
+	if (!governmentCurrency || !loanCurrency)
+	{
+		std::cerr << "Erro: Não foi possível encontrar as moedas especificadas." << std::endl;
+		return;
+	}
+
+	double convertedLoan = loan * loanCurrency->getValue() / governmentCurrency->getValue();
+
+	double newSupplyGovernment = governmentCurrency->getSupply() + convertedLoan;
+	double newSupplyLoan = loanCurrency->getSupply() - loan;
+
+	governmentCurrency->setSupply(newSupplyGovernment);
+	governmentCurrency->setDebt(loan);
+
+	loanCurrency->setSupply(newSupplyLoan);
+
+	std::cout << "Novo supply de " << governmentCurrency->getName() << ": " << governmentCurrency->getSupply() << std::endl;
+	std::cout << "Novo supply de " << loanCurrency->getName() << ": " << loanCurrency->getSupply() << std::endl;
 }
 void Events::demandShock(const std::string& currencyName)
 {
