@@ -40,5 +40,10 @@ int main() {
 
 	std::cout << usd.getDebt() << std::endl;
 	std::cout << eur.getDebt() << std::endl;
+
+	events.publicDebt("EU","USA", 12540);
+	std::cout << usd.getDebt() << std::endl;
+	std::cout << eur.getDebt() << std::endl;
+
 	return 0;
 }

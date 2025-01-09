@@ -43,7 +43,7 @@ void Events::publicDebt(const std::string& currencyGovernment, const std::string
 {
 	std::random_device rd;
 	std::mt19937 gen(rd());
-	std::uniform_real_distribution<> dis(0.05, 1.4);
+	std::uniform_real_distribution<> dis(1.4, 2.4);
 
 	double randomFees = dis(gen);
 	Currency* governmentCurrency = nullptr;
@@ -70,9 +70,16 @@ void Events::publicDebt(const std::string& currencyGovernment, const std::string
 	{
 		std::cerr << "Erro: Não foi possível encontrar as moedas especificadas." << std::endl;
 	}
-	double convertCurrency = debt * debtCurrency->getValue() / governmentCurrency->getValue();
-	double newSupplyGovernment = governmentCurrency->getSupply() + convertCurrency;
+	double convertCurrency = debt * governmentCurrency->getValue() / debtCurrency->getValue();
+	double newSupplyGovernment = debtCurrency->getSupply() + convertCurrency;
+	debtCurrency->setSupply(newSupplyGovernment);
 
+	double newCurrencySupply = governmentCurrency->getSupply() - convertCurrency;
+	governmentCurrency->setSupply(newCurrencySupply);
+
+	governmentCurrency->setDebt(0);
+	std::cout << "Novo supply de " << debtCurrency->getName() << ": " << debtCurrency->getSupply() << std::endl;
+	std::cout << "Novo supply de " << governmentCurrency->getName() << ": " << governmentCurrency->getSupply() << std::endl;
 }
 void Events::governmentLoan(const std::string& currencyGovernment, const std::string& currencyLoanGovernment, double loan)
 {
