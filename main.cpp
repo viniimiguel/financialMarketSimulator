@@ -21,7 +21,7 @@ int main() {
 
 	eur.setGovernment("EU");
 	eur.setName("EUR");
-	eur.setValue(0.8);
+	eur.setValue(2);
 	eur.setSupply(100000);
 	eur.setDemand(100000);
 	eur.setVolatility(0.05);
@@ -36,12 +36,12 @@ int main() {
 	eur.updateValue();
 
 	Events events({ &usd, &eur });
-	events.governmentLoan("EU", "USA", 12540);
+	events.governmentLoan("EU", "USA", 100);
 
 	std::cout << usd.getDebt() << std::endl;
 	std::cout << eur.getDebt() << std::endl;
 
-	events.publicDebt("EU","USA", 12540);
+	events.publicDebt("EU","USA", 100);
 	std::cout << usd.getDebt() << std::endl;
 	std::cout << eur.getDebt() << std::endl;
 

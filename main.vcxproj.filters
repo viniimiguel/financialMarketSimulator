@@ -33,6 +33,9 @@
     <ClCompile Include="httpRequestGroq.cpp">
       <Filter>GroqConsultor</Filter>
     </ClCompile>
+    <ClCompile Include="investors.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="currency.h">
@@ -46,6 +49,9 @@
     </ClInclude>
     <ClInclude Include="httpRequestGroq.h">
       <Filter>GroqConsultor</Filter>
+    </ClInclude>
+    <ClInclude Include="investors.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

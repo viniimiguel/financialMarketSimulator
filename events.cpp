@@ -183,4 +183,3 @@ void Events::underSupply(const std::string& currencyName)
 		}
 	}
 }
-
