@@ -1,5 +1,8 @@
 #include "events.h"
+#include "market.h"
+#include <memory>
 
+Market* mkt = new Market();
 
 void Events::inflation(const std::string& currencyName)
 {
@@ -16,7 +19,6 @@ void Events::inflation(const std::string& currencyName)
 
 			std::cout << "Currency" << currencyName << "updated after inflation" << std::endl;
 			std::cout << "new supply:" << newSupply << ", new value:" << newValue << std::endl;
-
 		}
 	}
 }
@@ -84,6 +86,9 @@ void Events::publicDebt(const std::string& currencyGovernment, const std::string
 	governmentCurrency->setDebt(0);
 	std::cout << "Novo supply de " << debtCurrency->getName() << ": " << debtCurrency->getSupply() << std::endl;
 	std::cout << "Novo supply de " << governmentCurrency->getName() << ": " << governmentCurrency->getSupply() << std::endl;
+
+	mkt->updateMakert();
+	delete mkt;
 }
 void Events::governmentLoan(const std::string& currencyGovernment, const std::string& currencyLoanGovernment, double loan)
 {
@@ -125,6 +130,8 @@ void Events::governmentLoan(const std::string& currencyGovernment, const std::st
 
 	std::cout << "Novo supply de " << governmentCurrency->getName() << ": " << governmentCurrency->getSupply() << std::endl;
 	std::cout << "Novo supply de " << loanCurrency->getName() << ": " << loanCurrency->getSupply() << std::endl;
+	mkt->updateMakert();
+	delete mkt;
 }
 void Events::demandShock(const std::string& currencyName)
 {

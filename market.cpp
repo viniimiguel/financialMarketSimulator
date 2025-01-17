@@ -13,8 +13,6 @@ void Market::updateMakert()
 		currency.updateValue();
 	}
 }
-
-
 void Market::displayMarket() {
     for (Currency& currency : currencies) {
         std::cout << "Currency Name: " << currency.getName() << "\n";

@@ -27,23 +27,22 @@ int main() {
 	eur.setVolatility(0.05);
 	eur.setDebt(0);
 
+	Market* market = new Market();
 
-	std::cout << usd.getSupply() << std::endl;
-	std::cout << eur.getSupply() << std::endl;
-	std::cout << usd.getValue() << std::endl;
-	std::cout << eur.getValue() << std::endl;
-	usd.updateValue();
-	eur.updateValue();
+	market->addCurrency(usd);
+	market->addCurrency(eur);
 
 	Events events({ &usd, &eur });
-	events.governmentLoan("EU", "USA", 200);
 
-	std::cout << usd.getDebt() << std::endl;
-	std::cout << eur.getDebt() << std::endl;
+	events.governmentLoan("EU", "USA", 200);
+	market->updateMakert();
+	market->displayMarket();
 
 	events.publicDebt("EU","USA", 300);
-	std::cout << usd.getDebt() << std::endl;
-	std::cout << eur.getDebt() << std::endl;
+	
+	market->displayMarket();
+	delete market;
 
+	
 	return 0;
 }

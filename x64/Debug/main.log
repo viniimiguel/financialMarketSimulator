@@ -1,4 +1,9 @@
 ﻿  events.cpp
-  main.vcxproj -> C:\Users\vinicius\Desktop\newgithub\Finance\main\x64\Debug\main.exe
-  'pwsh.exe' não é reconhecido como um comando interno
-  ou externo, um programa operável ou um arquivo em lotes.
+C:\Users\vinicius\Desktop\newgithub\Finance\main\main\events.cpp(91,9): error C2440: 'delete': não é possível converter de 'std::unique_ptr<Market,std::default_delete<Market>>' para 'void*'
+  C:\Users\vinicius\Desktop\newgithub\Finance\main\main\events.cpp(91,9):
+  Nenhum operador de conversão definida pelo usuário disponível que possa realizar esta conversão, ou o operador não pode ser chamado
+  
+C:\Users\vinicius\Desktop\newgithub\Finance\main\main\events.cpp(134,9): error C2440: 'delete': não é possível converter de 'std::unique_ptr<Market,std::default_delete<Market>>' para 'void*'
+  C:\Users\vinicius\Desktop\newgithub\Finance\main\main\events.cpp(134,9):
+  Nenhum operador de conversão definida pelo usuário disponível que possa realizar esta conversão, ou o operador não pode ser chamado
+  
