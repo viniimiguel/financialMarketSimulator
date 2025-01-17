@@ -70,6 +70,10 @@ void Events::publicDebt(const std::string& currencyGovernment, const std::string
 	{
 		std::cerr << "Erro: Não foi possível encontrar as moedas especificadas." << std::endl;
 	}
+	if (debt > governmentCurrency->getDebt()) {
+		std::cerr << "voce nao pode pagar mais do que deve voce pagou apenas a sua divida." << std::endl;
+		debt = governmentCurrency->getDebt();
+	}
 	double convertCurrency = debt * governmentCurrency->getValue() / debtCurrency->getValue();
 	double newSupplyGovernment = debtCurrency->getSupply() + convertCurrency;
 	debtCurrency->setSupply(newSupplyGovernment);

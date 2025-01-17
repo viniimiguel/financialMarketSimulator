@@ -36,12 +36,12 @@ int main() {
 	eur.updateValue();
 
 	Events events({ &usd, &eur });
-	events.governmentLoan("EU", "USA", 100);
+	events.governmentLoan("EU", "USA", 200);
 
 	std::cout << usd.getDebt() << std::endl;
 	std::cout << eur.getDebt() << std::endl;
 
-	events.publicDebt("EU","USA", 100);
+	events.publicDebt("EU","USA", 300);
 	std::cout << usd.getDebt() << std::endl;
 	std::cout << eur.getDebt() << std::endl;
 
