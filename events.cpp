@@ -1,17 +1,6 @@
 #include "events.h"
-#include "market.h"
 #include <memory>
-
-bool Events::getActived() {
-	return actived;
-}
-void Events::setActived(bool actived){
-	this->actived = actived;
-}
-
-
-
-Market* mkt = new Market();
+#include "market.h"
 
 void Events::inflation(const std::string& currencyName)
 {
@@ -27,10 +16,11 @@ void Events::inflation(const std::string& currencyName)
 			currency->setValue(newValue);
 		}
 	}
-	mkt->updateMakert();
-	delete mkt;
-	bool activate = true;
-	setActived(activate);
+	if (mkt) {
+		mkt->updateMakert();
+		mkt->displayMarket(actived);
+	}
+	setActived(true );
 }
 void Events::interestRate(const std::string& currencyName)
 {

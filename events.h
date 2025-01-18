@@ -4,15 +4,19 @@
 #include <cstdlib>
 #include <iostream>
 #include <random>
+#include "market.h"
 
 class Events
 {
 private:
 	std::vector<Currency*> currencies;
-	bool actived;
+	bool actived = false;
+	Market* mkt;
 public:
-	bool getActived();
-	void setActived(bool actived);
+	Events(std::vector<Currency*> currencies, Market* market)
+		: currencies(currencies), mkt(market) {}
+	bool getActived() const { return actived; }
+	void setActived(bool state) { actived = state; }
 	Events(const std::vector<Currency*>& currencies) : currencies(currencies){}
 	void inflation(const std::string& currencyName);
 	void interestRate(const std::string& currencyName);

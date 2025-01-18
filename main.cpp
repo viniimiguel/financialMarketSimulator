@@ -29,17 +29,14 @@ int main() {
 	eur.setDebt(0);
 
 	Market* mkt = new Market();
-	Events* events = new Events({ &usd, &eur });
-
-	std::thread displayThread(&Market::displayMarket, *mkt, events->getActived());
-
-
-
-
-	displayThread.join();
+	Events events({&usd, &eur}, mkt);
+	mkt->addCurrency(usd);
+	mkt->addCurrency(eur);
+	events.inflation("USD");
+	mkt->displayMarket(events.getActived());
 
 
-	delete events;
+
 	delete mkt;
 	return 0;
 }
