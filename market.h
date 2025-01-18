@@ -10,5 +10,5 @@ private:
 public:
 	void addCurrency(Currency currency);
 	void updateMakert();
-	void displayMarket();
+	void displayMarket(bool actived);
 };

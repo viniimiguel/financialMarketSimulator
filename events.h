@@ -9,7 +9,10 @@ class Events
 {
 private:
 	std::vector<Currency*> currencies;
+	bool actived;
 public:
+	bool getActived();
+	void setActived(bool actived);
 	Events(const std::vector<Currency*>& currencies) : currencies(currencies){}
 	void inflation(const std::string& currencyName);
 	void interestRate(const std::string& currencyName);

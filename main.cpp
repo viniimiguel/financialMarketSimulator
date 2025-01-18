@@ -4,6 +4,7 @@
 #include "currency.h"
 #include "market.h"
 #include "events.h"
+#include <thread>
 
 int main() {
 	std::locale::global(std::locale("en_US.UTF-8"));
@@ -27,22 +28,18 @@ int main() {
 	eur.setVolatility(0.05);
 	eur.setDebt(0);
 
-	Market* market = new Market();
+	Market* mkt = new Market();
+	Events* events = new Events({ &usd, &eur });
 
-	market->addCurrency(usd);
-	market->addCurrency(eur);
+	std::thread displayThread(&Market::displayMarket, *mkt, events->getActived());
 
-	Events events({ &usd, &eur });
 
-	events.governmentLoan("EU", "USA", 200);
-	market->updateMakert();
-	market->displayMarket();
 
-	events.publicDebt("EU","USA", 300);
-	
-	market->displayMarket();
-	delete market;
 
-	
+	displayThread.join();
+
+
+	delete events;
+	delete mkt;
 	return 0;
 }

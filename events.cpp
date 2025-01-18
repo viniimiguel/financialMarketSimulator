@@ -2,6 +2,15 @@
 #include "market.h"
 #include <memory>
 
+bool Events::getActived() {
+	return actived;
+}
+void Events::setActived(bool actived){
+	this->actived = actived;
+}
+
+
+
 Market* mkt = new Market();
 
 void Events::inflation(const std::string& currencyName)
@@ -16,11 +25,12 @@ void Events::inflation(const std::string& currencyName)
 
 			double newValue = currency->getDemand() / newSupply;
 			currency->setValue(newValue);
-
-			std::cout << "Currency" << currencyName << "updated after inflation" << std::endl;
-			std::cout << "new supply:" << newSupply << ", new value:" << newValue << std::endl;
 		}
 	}
+	mkt->updateMakert();
+	delete mkt;
+	bool activate = true;
+	setActived(activate);
 }
 void Events::interestRate(const std::string& currencyName)
 {
@@ -40,6 +50,8 @@ void Events::interestRate(const std::string& currencyName)
 
 		}
 	}
+	mkt->updateMakert();
+	delete mkt;
 }
 void Events::publicDebt(const std::string& currencyGovernment, const std::string& currencyDebtGovernment, double debt)
 {
@@ -151,6 +163,8 @@ void Events::demandShock(const std::string& currencyName)
 			std::cout << "Currency not found" << std::endl;
 		}
 	}
+	mkt->updateMakert();
+	delete mkt;
 }
 void Events::overDemand(const std::string& currencyName)
 {
@@ -165,6 +179,8 @@ void Events::overDemand(const std::string& currencyName)
 			currency->setValue(newValue);
 		}
 	}
+	mkt->updateMakert();
+	delete mkt;
 }
 void Events::overSupply(const std::string& currencyName) {
 	for (Currency* currency : currencies) {
@@ -176,6 +192,8 @@ void Events::overSupply(const std::string& currencyName) {
 			currency->setValue(newValue);
 		}
 	}
+	mkt->updateMakert();
+	delete mkt;
 }
 void Events::underSupply(const std::string& currencyName)
 {
@@ -193,4 +211,6 @@ void Events::underSupply(const std::string& currencyName)
 			currency->setValue(newValue);
 		}
 	}
+	mkt->updateMakert();
+	delete mkt;
 }
