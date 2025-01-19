@@ -8,7 +8,7 @@ class Currency
 private:
 	std::string government;
 	std::string name;
-	double value;
+	double value = 0;
 	double supply;
 	double demand;
 	double volatility;
