@@ -4,6 +4,7 @@
 #include "currency.h"
 #include "market.h"
 #include "events.h"
+#include <memory>
 #include <thread>
 
 int main() {
@@ -20,9 +21,15 @@ int main() {
 
 	usd.updateValue();
 	std::cout << "o valor da moeda e: " << usd.getValue() << std::endl;
-	Market* mkt = new Market();
-	mkt->addCurrency(usd);
-	mkt->displayMarket(true);
+	Market* mkt = new Market({&usd});
+
+	Events events({ &usd }, mkt);
+
+
+	events.overSupply("USA");
+	std::cout << usd.getSupply() << std::endl;
+
+	mkt->displayMarket(events.getActived());
 
 
 	return 0;

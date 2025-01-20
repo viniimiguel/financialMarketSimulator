@@ -6,9 +6,9 @@
 class Market
 {
 private:
-	std::vector<Currency> currencies;
+	std::vector<Currency*> currencies;
 public:
-	void addCurrency(Currency currency);
+	Market(std::vector<Currency*> currencies) : currencies(currencies) {}
 	void updateMakert();
 	void displayMarket(bool actived);
 };
