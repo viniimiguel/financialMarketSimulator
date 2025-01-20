@@ -12,7 +12,7 @@ private:
 	double supply;
 	double demand;
 	double volatility;
-	double debt;
+	double debt = 0;
 public:
 	double getValue();
 	double getSupply();

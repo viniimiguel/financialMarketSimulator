@@ -17,18 +17,28 @@ int main() {
 	usd.setSupply(100);
 	usd.setDemand(100);
 	usd.setVolatility(0.05);
-	usd.setDebt(0);
 
 	usd.updateValue();
+
+	Currency eur;
+	eur.setGovernment("EU");
+	eur.setName("EUR");
+	eur.setSupply(100);
+	eur.setDemand(100);
+	eur.setVolatility(0.04);
+
+	eur.updateValue();
+
 	std::cout << "o valor da moeda e: " << usd.getValue() << std::endl;
-	Market* mkt = new Market({&usd});
+	Market* mkt = new Market({&usd, &eur});
 
-	Events events({ &usd }, mkt);
+	Events events({ &usd, &eur }, mkt);
 
 
-	events.overSupply("USA");
 	std::cout << usd.getSupply() << std::endl;
 
+	mkt->displayMarket(events.getActived());
+	events.governmentLoan("USA", "EU", 200);
 	mkt->displayMarket(events.getActived());
 
 

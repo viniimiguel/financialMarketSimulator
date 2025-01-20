@@ -119,10 +119,13 @@ void Events::governmentLoan(const std::string& currencyGovernment, const std::st
 
 	if (!governmentCurrency || !loanCurrency)
 	{
-		std::cerr << "Erro: Não foi possível encontrar as moedas especificadas." << std::endl;
+		std::cerr << "Erro: Nao foi possível encontrar as moedas especificadas." << std::endl;
 		return;
 	}
-
+	if (loan > loanCurrency->getSupply()) {
+		std::cerr << "Erro: Nao e possivel emprestar mais do que voce tem!" << std::endl;
+		return;
+	}
 	double convertedLoan = loan * loanCurrency->getValue() / governmentCurrency->getValue();
 
 	double newSupplyGovernment = governmentCurrency->getSupply() + convertedLoan;
