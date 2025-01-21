@@ -23,7 +23,8 @@ int main() {
 	Currency eur;
 	eur.setGovernment("EU");
 	eur.setName("EUR");
-	eur.setSupply(100);
+	// lembrar de arrumar o error do supply maior que a demanda no UNDERSUPPLY
+	eur.setSupply(1000);
 	eur.setDemand(100);
 	eur.setVolatility(0.04);
 
@@ -34,13 +35,8 @@ int main() {
 
 	Events events({ &usd, &eur }, mkt);
 
-
-	std::cout << usd.getSupply() << std::endl;
-
+	events.underSupply("EU");
 	mkt->displayMarket(events.getActived());
-	events.governmentLoan("USA", "EU", 200);
-	mkt->displayMarket(events.getActived());
-
 
 	return 0;
 }

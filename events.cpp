@@ -143,12 +143,21 @@ void Events::governmentLoan(const std::string& currencyGovernment, const std::st
 	setActived(true);
 	
 }
-void Events::demandShock(const std::string& currencyGovernment)
+void Events::underDemand(const std::string& currencyGovernment)
 {
 	for(Currency* currency : currencies)
 	{
 		if(currency->getGovernment() == currencyGovernment)
 		{
+			if (currency->getDemand() < currency->getSupply()) {
+				std::cerr << "a demanda ja e menor que a oferta" << std::endl;
+				if (mkt) {
+					mkt->updateMakert();
+					mkt->displayMarket(actived);
+				}
+				setActived(true);
+				return;
+			}
 			double demandShock = currency->getSupply() * 0.1;
 			double newDemand = currency->getDemand() - demandShock;
 			currency->setDemand(newDemand);
@@ -173,11 +182,20 @@ void Events::overDemand(const std::string& currencyGovernment)
 	{
 		if(currency->getGovernment() == currencyGovernment)
 		{
-			double overDemand = currency->getDemand() * 0.2;
-			double newDemand = currency->getDemand() + overDemand;
+			if (currency->getDemand() > currency->getSupply()) {
+				std::cerr << "demanda ja e maior que a oferta" << std::endl;
+				if (mkt) {
+					mkt->updateMakert();
+					mkt->displayMarket(actived);
+				}
+				setActived(true);
+				return;
+			}
+			double overDemand = currency->getSupply() * 0.1;
+			double newDemand = currency->getSupply() + overDemand;
 			currency->setDemand(newDemand);
 			double newValue = currency->getDemand() / currency->getSupply();
-			currency->setValue(newValue);
+			currency->setValue(newDemand);
 		}
 	}
 	if (mkt) {
@@ -189,11 +207,19 @@ void Events::overDemand(const std::string& currencyGovernment)
 void Events::overSupply(const std::string& currencyGovernment) {
 	for (Currency* currency : currencies) {
 		if (currency->getGovernment() == currencyGovernment) {
+			if (currency->getSupply() > currency->getDemand()) {
+				std::cerr << "a oferta ja e maior que a demanda" << std::endl;
+				if (mkt) {
+					mkt->updateMakert();
+					mkt->displayMarket(actived);
+				}
+				setActived(true);
+				return;
+			}
 			double overSupply = currency->getDemand() * 0.1;
-			double newSupply = currency->getSupply() + overSupply;
+			double newSupply = currency->getDemand() + overSupply;
 			currency->setSupply(newSupply);
-			double newValue = currency->getDemand() / newSupply;
-			currency->setValue(newValue);
+			currency->setValue(overSupply);
 		}
 	}
 	if (mkt) {
@@ -208,14 +234,19 @@ void Events::underSupply(const std::string& currencyGovernment)
 	{
 		if (currency->getGovernment() == currencyGovernment)
 		{
+			if (currency->getSupply() < currency->getDemand()) {
+				std::cerr << "a oferta ja e menor que a demanda" << std::endl;
+				if (mkt) {
+					mkt->updateMakert();
+					mkt->displayMarket(actived);
+				}
+				setActived(true);
+				return;
+			}
 			double underSupply = currency->getDemand() * 0.1;
 			double newSupply = currency->getSupply() - underSupply;
-			if (newSupply < 0.1) {
-				newSupply = 0.1;
-			}
 			currency->setSupply(newSupply);
-			double newValue = currency->getDemand() / (newSupply + 1e-6);
-			currency->setValue(newValue);
+			currency->setValue(newSupply);
 		}
 	}
 	if (mkt) {
