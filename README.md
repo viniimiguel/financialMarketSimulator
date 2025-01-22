@@ -29,7 +29,7 @@ O projeto **Finance** é uma simulação interativa do mercado financeiro, focad
    ```bash
    ./vcpkg install curl  # Linux/macOS
    .\vcpkg.exe install curl  # Windows
-4. Configure o Cmake para usar o vcpkg (Caso nao esteja usando o visual estudio)
+4. Configure o Cmake para usar o vcpkg (Caso nao esteja usando o visual studio)
    ```bash
    export VCPKG_ROOT=/path/to/vcpkg  # Linux/macOS
    set VCPKG_ROOT=C:\path\to\vcpkg  # Windows
