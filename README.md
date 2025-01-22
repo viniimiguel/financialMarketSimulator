@@ -5,9 +5,9 @@
 O projeto **Finance** é uma simulação interativa do mercado financeiro, focada em demonstrar como eventos e crises impactam o valor de uma moeda. Atualmente, o programa permite simular crises econômicas e políticas que afetam diretamente o valor de uma moeda e o comportamento do governo. No futuro, será adicionada uma funcionalidade dinâmica de investidores, onde cada investidor terá parâmetros únicos para compra e venda, escolhendo os momentos ideais com base no preço das moedas, influenciados por eventos simulados. O objetivo é criar uma experiência rica e educativa sobre a dinâmica do mercado financeiro.
 
 ## Pré-requisitos
-- Git
-- Compilador C++
-- Cmake ou vcpkg
+- **Git**
+- Compilador **C++**
+- **Cmake** ou **vcpkg**
 
 ### Recursos utilizados
 - Linguagem: **C++**
