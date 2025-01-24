@@ -23,9 +23,8 @@ int main() {
 	Currency eur;
 	eur.setGovernment("EU");
 	eur.setName("EUR");
-	// lembrar de arrumar o error do supply maior que a demanda no UNDERSUPPLY
 	eur.setSupply(1000);
-	eur.setDemand(100);
+	eur.setDemand(1000);
 	eur.setVolatility(0.04);
 
 	eur.updateValue();
@@ -35,7 +34,7 @@ int main() {
 
 	Events events({ &usd, &eur }, mkt);
 
-	events.underSupply("EU");
+	events.underDemand("EU");
 	mkt->displayMarket(events.getActived());
 
 	return 0;

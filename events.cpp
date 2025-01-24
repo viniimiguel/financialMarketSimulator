@@ -158,6 +158,18 @@ void Events::underDemand(const std::string& currencyGovernment)
 				setActived(true);
 				return;
 			}
+			if (currency->getDemand() > currency->getSupply()) {
+				double underDemand = floor(currency->getDemand() - currency->getSupply() * 0.9);
+				double newDemand = currency->getDemand() - underDemand;
+				currency->setDemand(newDemand);
+				currency->setValue(newDemand);
+				if (mkt) {
+					mkt->updateMakert();
+					mkt->displayMarket(actived);
+				}
+				setActived(true);
+				return;
+			}
 			double demandShock = currency->getSupply() * 0.1;
 			double newDemand = currency->getDemand() - demandShock;
 			currency->setDemand(newDemand);
@@ -236,6 +248,18 @@ void Events::underSupply(const std::string& currencyGovernment)
 		{
 			if (currency->getSupply() < currency->getDemand()) {
 				std::cerr << "a oferta ja e menor que a demanda" << std::endl;
+				if (mkt) {
+					mkt->updateMakert();
+					mkt->displayMarket(actived);
+				}
+				setActived(true);
+				return;
+			}
+			if (currency->getSupply() > currency->getDemand()) {
+				double underSupply = floor(currency->getSupply() - currency->getDemand()* 0.9);
+				double newSupply = currency->getSupply() - underSupply;
+				currency->setSupply(newSupply);
+				currency->setValue(newSupply);
 				if (mkt) {
 					mkt->updateMakert();
 					mkt->displayMarket(actived);
