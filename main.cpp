@@ -7,35 +7,31 @@
 #include <memory>
 #include <thread>
 
+Currency createCurrencies(const std::string& name, const std::string& government, float supply, float volatility) {
+	Currency currency;
+	currency.setName(name);
+	currency.setGovernment(government);
+	currency.setSupply(supply);
+	currency.setDemand(supply);
+	currency.setVolatility(volatility);
+	currency.updateValue();
+	return currency;
+}
 int main() {
-	std::locale::global(std::locale("en_US.UTF-8"));
+    std::locale::global(std::locale("en_US.UTF-8"));
 
-	Currency usd;
+    Currency usd = createCurrencies("USD", "USA", 10000, 0.05);
+    Currency eur = createCurrencies("EUR", "EU", 1000, 0.04);
 
-	usd.setGovernment("USA");
-	usd.setName("USD");
-	usd.setSupply(100);
-	usd.setDemand(100);
-	usd.setVolatility(0.05);
+    std::cout << "O valor da moeda USD é: " << usd.getValue() << std::endl;
+    std::cout << "O valor da moeda EUR é: " << eur.getValue() << std::endl;
 
-	usd.updateValue();
+    Market* mkt = new Market({ &usd, &eur });
+    Events events({ &usd, &eur }, mkt);
 
-	Currency eur;
-	eur.setGovernment("EU");
-	eur.setName("EUR");
-	eur.setSupply(1000);
-	eur.setDemand(1000);
-	eur.setVolatility(0.04);
+    events.underDemand("EU");
+    mkt->displayMarket(events.getActived());
 
-	eur.updateValue();
-
-	std::cout << "o valor da moeda e: " << usd.getValue() << std::endl;
-	Market* mkt = new Market({&usd, &eur});
-
-	Events events({ &usd, &eur }, mkt);
-
-	events.underDemand("EU");
-	mkt->displayMarket(events.getActived());
-
-	return 0;
+    delete mkt;
+    return 0;
 }

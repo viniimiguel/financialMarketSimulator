@@ -1,4 +1,6 @@
 ﻿  main.cpp
+C:\Users\vinicius\Desktop\newgithub\Finance\main\main\main.cpp(24,58): warning C4305: 'argumento': truncamento de 'double' para 'float'
+C:\Users\vinicius\Desktop\newgithub\Finance\main\main\main.cpp(25,56): warning C4305: 'argumento': truncamento de 'double' para 'float'
   main.vcxproj -> C:\Users\vinicius\Desktop\newgithub\Finance\main\x64\Debug\main.exe
   'pwsh.exe' não é reconhecido como um comando interno
   ou externo, um programa operável ou um arquivo em lotes.
