@@ -127,19 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="currency.cpp" />
-    <ClCompile Include="events.cpp" />
+    <ClCompile Include="stock.cpp" />
     <ClCompile Include="httpRequestGroq.cpp" />
-    <ClCompile Include="investors.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="market.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="currency.h" />
-    <ClInclude Include="events.h" />
+    <ClInclude Include="stock.h" />
     <ClInclude Include="httpRequestGroq.h" />
-    <ClInclude Include="investors.h" />
-    <ClInclude Include="market.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
