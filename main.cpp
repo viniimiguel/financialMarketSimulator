@@ -1,5 +1,5 @@
 #include <iostream>
-#include "stock.h"
+#include "./headerFiles/stock.h"
 
 int main() {
     Stock apple;
