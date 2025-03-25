@@ -12,18 +12,27 @@ void Stock::setPrice(double price) {
 void Stock::setTotalShares(int totalShares) {
     this->totalShares = totalShares;
 }
+void Stock::setTotalDemand(int totalDemand) {
+    this->totalDemand = totalDemand;
+}
+
 std::string Stock::getCompanyName() {
     return companyName;
 }
 std::string Stock::getTicker() {
     return ticker;
 }
-double Stock::getPrice() {
-    return price;
-}
 int Stock::getTotalShares() {
     return totalShares;
 }
-void Stock::updatePrice() {
-
+double Stock::getPrice() {
+    return price;
+}
+int Stock::getTotalDemand() {
+    return totalDemand;
+}
+void Stock::changePrice() {
+    if (totalShares + totalDemand == 0) return;
+    double imbalance = (totalDemand - totalShares) / static_cast<double>(totalShares + totalDemand);
+    price = price * (1 + imbalance);
 }
