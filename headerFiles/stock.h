@@ -3,8 +3,7 @@
 #include <string>
 #include <cstdlib>
 
-class Stock
-{
+class Stock {
 private:
     std::string ticker;
     std::string companyName;

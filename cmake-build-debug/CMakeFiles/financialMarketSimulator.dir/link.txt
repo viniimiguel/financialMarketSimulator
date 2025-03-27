@@ -1,1 +1,1 @@
-/usr/bin/c++ -g CMakeFiles/financialMarketSimulator.dir/main.cpp.o CMakeFiles/financialMarketSimulator.dir/cppFiles/stock.cpp.o -o financialMarketSimulator
+/usr/bin/c++ -g CMakeFiles/financialMarketSimulator.dir/main.cpp.o CMakeFiles/financialMarketSimulator.dir/cppFiles/stock.cpp.o CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.o -o financialMarketSimulator

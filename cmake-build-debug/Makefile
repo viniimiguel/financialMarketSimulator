@@ -129,6 +129,30 @@ financialMarketSimulator/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/financialMarketSimulator.dir/build.make CMakeFiles/financialMarketSimulator.dir/build
 .PHONY : financialMarketSimulator/fast
 
+cppFiles/market.o: cppFiles/market.cpp.o
+.PHONY : cppFiles/market.o
+
+# target to build an object file
+cppFiles/market.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/financialMarketSimulator.dir/build.make CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.o
+.PHONY : cppFiles/market.cpp.o
+
+cppFiles/market.i: cppFiles/market.cpp.i
+.PHONY : cppFiles/market.i
+
+# target to preprocess a source file
+cppFiles/market.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/financialMarketSimulator.dir/build.make CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.i
+.PHONY : cppFiles/market.cpp.i
+
+cppFiles/market.s: cppFiles/market.cpp.s
+.PHONY : cppFiles/market.s
+
+# target to generate assembly for a file
+cppFiles/market.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/financialMarketSimulator.dir/build.make CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.s
+.PHONY : cppFiles/market.cpp.s
+
 cppFiles/stock.o: cppFiles/stock.cpp.o
 .PHONY : cppFiles/stock.o
 
@@ -186,6 +210,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... financialMarketSimulator"
+	@echo "... cppFiles/market.o"
+	@echo "... cppFiles/market.i"
+	@echo "... cppFiles/market.s"
 	@echo "... cppFiles/stock.o"
 	@echo "... cppFiles/stock.i"
 	@echo "... cppFiles/stock.s"

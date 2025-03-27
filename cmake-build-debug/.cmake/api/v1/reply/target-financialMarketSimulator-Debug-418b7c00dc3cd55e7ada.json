@@ -50,7 +50,8 @@
 			"sourceIndexes" : 
 			[
 				0,
-				1
+				1,
+				4
 			]
 		}
 	],
@@ -84,14 +85,16 @@
 			"sourceIndexes" : 
 			[
 				0,
-				1
+				1,
+				4
 			]
 		},
 		{
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				2
+				2,
+				3
 			]
 		}
 	],
@@ -113,6 +116,17 @@
 			"backtrace" : 1,
 			"path" : "headerFiles/stock.h",
 			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "headerFiles/market.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "cppFiles/market.cpp",
+			"sourceGroupIndex" : 0
 		}
 	],
 	"type" : "EXECUTABLE"

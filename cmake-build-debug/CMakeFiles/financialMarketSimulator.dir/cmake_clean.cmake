@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.o"
+  "CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.o.d"
   "CMakeFiles/financialMarketSimulator.dir/cppFiles/stock.cpp.o"
   "CMakeFiles/financialMarketSimulator.dir/cppFiles/stock.cpp.o.d"
   "CMakeFiles/financialMarketSimulator.dir/main.cpp.o"
