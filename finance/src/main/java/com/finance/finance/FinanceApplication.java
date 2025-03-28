@@ -1,4 +1,4 @@
-package finance.finance;
+package com.finance.finance;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

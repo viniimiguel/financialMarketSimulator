@@ -1,7 +1,9 @@
 package service;
 
 import dto.StockSimulatorDto;
+import org.springframework.stereotype.Service;
 
+@Service
 public class SimulatorService {
 
     public String createStock(StockSimulatorDto stockSimulatorDto) {
