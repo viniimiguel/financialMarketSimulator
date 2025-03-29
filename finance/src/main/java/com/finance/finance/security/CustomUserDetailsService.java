@@ -1,12 +1,12 @@
-package security;
+package com.finance.finance.security;
 
-import entity.User;
+import com.finance.finance.entity.User;
+import com.finance.finance.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
-import repository.UserRepository;
 
 import java.util.ArrayList;
 

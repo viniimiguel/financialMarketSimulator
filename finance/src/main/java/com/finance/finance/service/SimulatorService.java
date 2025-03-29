@@ -1,6 +1,6 @@
-package service;
+package com.finance.finance.service;
 
-import dto.StockSimulatorDto;
+import com.finance.finance.dto.StockSimulatorDto;
 import org.springframework.stereotype.Service;
 
 @Service
