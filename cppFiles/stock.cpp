@@ -1,6 +1,10 @@
 #include "../headerFiles/stock.h"
 #include <curl/curl.h>
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+
 void Stock::setTicker(std::string ticker) {
     this->ticker = ticker;
 }
@@ -80,3 +84,10 @@ void Stock::sendStockJson() {
 
     curl_global_cleanup();
 }
+
+void Stock::smallRandomizeSharesAndDemand() {
+
+}
+
+
+

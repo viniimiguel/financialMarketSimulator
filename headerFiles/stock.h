@@ -23,5 +23,6 @@ public:
     int getTotalDemand();
     void changePrice();
     void sendStockJson();
+    void smallRandomizeSharesAndDemand();
 
 };

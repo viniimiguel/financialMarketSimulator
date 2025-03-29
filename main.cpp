@@ -19,5 +19,21 @@ int main() {
 
     std::cout << "update price: " << apple.getPrice() << "\n";
     apple.sendStockJson();
+
+    Stock ibm;
+
+    ibm.setTicker("ibm");
+    ibm.setCompanyName("ibm Inc.");
+    ibm.setPrice(50);
+    ibm.setTotalShares(100);
+    ibm.setTotalDemand(10070);
+    ibm.changePrice();
+
+    ibm.sendStockJson();
+    std::cout << "Ticker: " << ibm.getTicker() << "\n";
+    std::cout << "Company: " << ibm.getCompanyName() << "\n";
+    std::cout << "Price: $" << ibm.getPrice() << "\n";
+    std::cout << "Total Shares: " << ibm.getTotalShares() << "\n";
+    std::cout << "Total Demand: " << ibm.getTotalDemand() << "\n";
     return 0;
 }
