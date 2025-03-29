@@ -1,6 +1,0 @@
-# ninja log v6
-2	539	1742513403042247756	CMakeFiles/financialMarketSimulator.dir/main.cpp.o	2c37795d0a7a0659
-539	636	1742513403580247759	financialMarketSimulator	68a11e316d17250c
-3	414	1742513790710250271	CMakeFiles/financialMarketSimulator.dir/cppFiles/stock.cpp.o	6a0ff0f3b2d6720e
-2	483	1742513790709250271	CMakeFiles/financialMarketSimulator.dir/main.cpp.o	2c37795d0a7a0659
-483	582	1742513791190250274	financialMarketSimulator	22a811e3ff5ae49b

@@ -6,8 +6,8 @@ int main() {
     apple.setTicker("AAPL");
     apple.setCompanyName("Apple Inc.");
     apple.setPrice(150);
-    apple.setTotalShares(1000);
-    apple.setTotalDemand(1000);
+    apple.setTotalShares(10600);
+    apple.setTotalDemand(10070);
 
     std::cout << "Ticker: " << apple.getTicker() << "\n";
     std::cout << "Company: " << apple.getCompanyName() << "\n";
@@ -18,6 +18,6 @@ int main() {
     apple.changePrice();
 
     std::cout << "update price: " << apple.getPrice() << "\n";
-
+    apple.sendStockJson();
     return 0;
 }

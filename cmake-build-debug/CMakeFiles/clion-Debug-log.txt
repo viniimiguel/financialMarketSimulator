@@ -11,6 +11,6 @@
 -- Check for working CXX compiler: /usr/bin/c++ - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
--- Configuring done (5.9s)
--- Generating done (0.0s)
+-- Configuring done (22.0s)
+-- Generating done (0.2s)
 -- Build files have been written to: /home/vinicius/projects/financialMarketSimulator/cmake-build-debug

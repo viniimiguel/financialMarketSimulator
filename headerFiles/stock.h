@@ -1,7 +1,6 @@
 #pragma once
 
 #include <string>
-#include <cstdlib>
 
 class Stock {
 private:
@@ -23,5 +22,6 @@ public:
     int getTotalShares();
     int getTotalDemand();
     void changePrice();
+    void sendStockJson();
 
 };

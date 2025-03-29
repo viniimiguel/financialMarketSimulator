@@ -124,6 +124,7 @@ financialMarketSimulator: CMakeFiles/financialMarketSimulator.dir/main.cpp.o
 financialMarketSimulator: CMakeFiles/financialMarketSimulator.dir/cppFiles/stock.cpp.o
 financialMarketSimulator: CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.o
 financialMarketSimulator: CMakeFiles/financialMarketSimulator.dir/build.make
+financialMarketSimulator: /usr/lib/x86_64-linux-gnu/libcurl.so
 financialMarketSimulator: CMakeFiles/financialMarketSimulator.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/vinicius/projects/financialMarketSimulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable financialMarketSimulator"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/financialMarketSimulator.dir/link.txt --verbose=$(VERBOSE)

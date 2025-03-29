@@ -39,7 +39,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake"
   "/home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake"
   "/home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeTestCompilerCommon.cmake"
-  "/home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeUnixFindMake.cmake"
   "/home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/ADSP-DetermineCompiler.cmake"
   "/home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/ARMCC-DetermineCompiler.cmake"
   "/home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/ARMClang-DetermineCompiler.cmake"
@@ -98,6 +97,10 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake"
   "/home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/zOS-C-DetermineCompiler.cmake"
   "/home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake"
+  "/home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindCURL.cmake"
+  "/home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake"
+  "/home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindPackageMessage.cmake"
+  "/home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindPkgConfig.cmake"
   "/home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake"
   "/home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/share/cmake-3.30/Modules/Internal/FeatureTesting.cmake"
   "/home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux-Determine-CXX.cmake"
@@ -107,6 +110,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux-Initialize.cmake"
   "/home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux.cmake"
   "/home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/UnixPaths.cmake"
+  "/home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/share/cmake-3.30/Modules/SelectLibraryConfigurations.cmake"
   )
 
 # The corresponding makefile is:
