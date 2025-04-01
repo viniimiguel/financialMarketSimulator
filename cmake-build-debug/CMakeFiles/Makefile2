@@ -81,12 +81,12 @@ clean: CMakeFiles/financialMarketSimulator.dir/clean
 CMakeFiles/financialMarketSimulator.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/financialMarketSimulator.dir/build.make CMakeFiles/financialMarketSimulator.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/financialMarketSimulator.dir/build.make CMakeFiles/financialMarketSimulator.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/vinicius/projects/financialMarketSimulator/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4 "Built target financialMarketSimulator"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/vinicius/projects/financialMarketSimulator/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target financialMarketSimulator"
 .PHONY : CMakeFiles/financialMarketSimulator.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/financialMarketSimulator.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/vinicius/projects/financialMarketSimulator/cmake-build-debug/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vinicius/projects/financialMarketSimulator/cmake-build-debug/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/financialMarketSimulator.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/vinicius/projects/financialMarketSimulator/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/financialMarketSimulator.dir/rule

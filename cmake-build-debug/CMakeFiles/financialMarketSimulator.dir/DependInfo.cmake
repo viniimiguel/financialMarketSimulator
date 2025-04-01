@@ -8,7 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/vinicius/projects/financialMarketSimulator/cppFiles/events.cpp" "CMakeFiles/financialMarketSimulator.dir/cppFiles/events.cpp.o" "gcc" "CMakeFiles/financialMarketSimulator.dir/cppFiles/events.cpp.o.d"
   "/home/vinicius/projects/financialMarketSimulator/cppFiles/stock.cpp" "CMakeFiles/financialMarketSimulator.dir/cppFiles/stock.cpp.o" "gcc" "CMakeFiles/financialMarketSimulator.dir/cppFiles/stock.cpp.o.d"
+  "/home/vinicius/projects/financialMarketSimulator/cppFiles/stocks.cpp" "CMakeFiles/financialMarketSimulator.dir/cppFiles/stocks.cpp.o" "gcc" "CMakeFiles/financialMarketSimulator.dir/cppFiles/stocks.cpp.o.d"
   "/home/vinicius/projects/financialMarketSimulator/cppFiles/util.cpp" "CMakeFiles/financialMarketSimulator.dir/cppFiles/util.cpp.o" "gcc" "CMakeFiles/financialMarketSimulator.dir/cppFiles/util.cpp.o.d"
   "/home/vinicius/projects/financialMarketSimulator/main.cpp" "CMakeFiles/financialMarketSimulator.dir/main.cpp.o" "gcc" "CMakeFiles/financialMarketSimulator.dir/main.cpp.o.d"
   )

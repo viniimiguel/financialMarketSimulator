@@ -15,12 +15,6 @@ void Stock::setCompanyName(std::string companyName) {
 void Stock::setPrice(long long price) {
     this->price = price;
 }
-void Stock::setTotalShares(long long totalShares) {
-    this->totalShares = totalShares;
-}
-void Stock::setTotalDemand(long long totalDemand) {
-    this->totalDemand = totalDemand;
-}
 void Stock::setFormatedPrice(double price) {
     this->formatedPrice = price;
 }
@@ -37,15 +31,11 @@ std::string Stock::getCompanyName() {
 std::string Stock::getTicker() {
     return ticker;
 }
-long long Stock::getTotalShares() {
-    return totalShares;
-}
+
 long long Stock::getPrice() {
     return price;
 }
-long long Stock::getTotalDemand() {
-    return totalDemand;
-}
+
 double Stock::getVariation() {
     return variation;
 }
@@ -59,8 +49,6 @@ void Stock::changePrice() {
     std::cout << "Variação: " << variable * 100 << "% | Novo Preço: " << price << std::endl;
     variation = variable * 100;
 }
-
-
 void Stock::sendStockJson() {
     CURL *curl;
     CURLcode res;
@@ -68,14 +56,9 @@ void Stock::sendStockJson() {
         "\"ticker\": \"" + getTicker() + "\", "
         "\"companyName\": \"" + getCompanyName() + "\", "
         "\"price\": " + std::to_string(getFormatedPrice()) + ", "
-        "\"shares\": " + std::to_string(getTotalShares()) + ", "
-        "\"demand\": " + std::to_string(getTotalDemand()) + ", "
         "\"variation\": " + std::to_string(getVariation()) +
-
-
     "}";
 
-    curl_global_init(CURL_GLOBAL_DEFAULT);
     curl = curl_easy_init();
 
     if (curl) {
@@ -103,6 +86,4 @@ void Stock::sendStockJson() {
     } else {
         std::cerr << "Falha ao inicializar CURL." << std::endl;
     }
-
-    curl_global_cleanup();
 }

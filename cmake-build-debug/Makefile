@@ -129,6 +129,30 @@ financialMarketSimulator/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/financialMarketSimulator.dir/build.make CMakeFiles/financialMarketSimulator.dir/build
 .PHONY : financialMarketSimulator/fast
 
+cppFiles/events.o: cppFiles/events.cpp.o
+.PHONY : cppFiles/events.o
+
+# target to build an object file
+cppFiles/events.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/financialMarketSimulator.dir/build.make CMakeFiles/financialMarketSimulator.dir/cppFiles/events.cpp.o
+.PHONY : cppFiles/events.cpp.o
+
+cppFiles/events.i: cppFiles/events.cpp.i
+.PHONY : cppFiles/events.i
+
+# target to preprocess a source file
+cppFiles/events.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/financialMarketSimulator.dir/build.make CMakeFiles/financialMarketSimulator.dir/cppFiles/events.cpp.i
+.PHONY : cppFiles/events.cpp.i
+
+cppFiles/events.s: cppFiles/events.cpp.s
+.PHONY : cppFiles/events.s
+
+# target to generate assembly for a file
+cppFiles/events.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/financialMarketSimulator.dir/build.make CMakeFiles/financialMarketSimulator.dir/cppFiles/events.cpp.s
+.PHONY : cppFiles/events.cpp.s
+
 cppFiles/stock.o: cppFiles/stock.cpp.o
 .PHONY : cppFiles/stock.o
 
@@ -152,6 +176,30 @@ cppFiles/stock.s: cppFiles/stock.cpp.s
 cppFiles/stock.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/financialMarketSimulator.dir/build.make CMakeFiles/financialMarketSimulator.dir/cppFiles/stock.cpp.s
 .PHONY : cppFiles/stock.cpp.s
+
+cppFiles/stocks.o: cppFiles/stocks.cpp.o
+.PHONY : cppFiles/stocks.o
+
+# target to build an object file
+cppFiles/stocks.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/financialMarketSimulator.dir/build.make CMakeFiles/financialMarketSimulator.dir/cppFiles/stocks.cpp.o
+.PHONY : cppFiles/stocks.cpp.o
+
+cppFiles/stocks.i: cppFiles/stocks.cpp.i
+.PHONY : cppFiles/stocks.i
+
+# target to preprocess a source file
+cppFiles/stocks.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/financialMarketSimulator.dir/build.make CMakeFiles/financialMarketSimulator.dir/cppFiles/stocks.cpp.i
+.PHONY : cppFiles/stocks.cpp.i
+
+cppFiles/stocks.s: cppFiles/stocks.cpp.s
+.PHONY : cppFiles/stocks.s
+
+# target to generate assembly for a file
+cppFiles/stocks.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/financialMarketSimulator.dir/build.make CMakeFiles/financialMarketSimulator.dir/cppFiles/stocks.cpp.s
+.PHONY : cppFiles/stocks.cpp.s
 
 cppFiles/util.o: cppFiles/util.cpp.o
 .PHONY : cppFiles/util.o
@@ -210,9 +258,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... financialMarketSimulator"
+	@echo "... cppFiles/events.o"
+	@echo "... cppFiles/events.i"
+	@echo "... cppFiles/events.s"
 	@echo "... cppFiles/stock.o"
 	@echo "... cppFiles/stock.i"
 	@echo "... cppFiles/stock.s"
+	@echo "... cppFiles/stocks.o"
+	@echo "... cppFiles/stocks.i"
+	@echo "... cppFiles/stocks.s"
 	@echo "... cppFiles/util.o"
 	@echo "... cppFiles/util.i"
 	@echo "... cppFiles/util.s"

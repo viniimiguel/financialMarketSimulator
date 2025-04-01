@@ -15,6 +15,9 @@ add_executable(financialMarketSimulator
         headerFiles/stock.h
         headerFiles/util.h
         cppFiles/util.cpp
+        cppFiles/stocks.cpp
+        headerFiles/events.h
+        cppFiles/events.cpp
 )
 
 target_link_libraries(financialMarketSimulator ${CURL_LIBRARIES})

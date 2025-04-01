@@ -1,23 +1,26 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 class Stock {
 private:
     std::string ticker;
     std::string companyName;
     long long price = 0;
-    long long  totalShares;
-    long long  totalDemand;
     double formatedPrice;
     double variation = 0.0;
 
 public:
+    Stock(const std::string &ticker, const std::string &company_name, long long price)
+        : ticker(ticker),
+          companyName(company_name),
+          price(price) {
+    }
+
     void setTicker(std::string ticker);
     void setCompanyName(std::string CompanyName);
     void setPrice(long long price);
-    void setTotalShares(long long totalShares);
-    void setTotalDemand(long long totalDemand);
     void setFormatedPrice(double price);
     void setVariation(double variation);
     double getFormatedPrice();
@@ -25,8 +28,8 @@ public:
     std::string getTicker();
     std::string getCompanyName();
     long long getPrice();
-    long long getTotalShares();
-    long long getTotalDemand();
     void changePrice();
     void sendStockJson();
 };
+
+extern std::vector<Stock> stocks;
