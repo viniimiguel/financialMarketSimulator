@@ -13,6 +13,7 @@ public class SimulatorService {
         System.out.println("price: " + stockSimulatorDto.price());
         System.out.println("shares: " + stockSimulatorDto.shares());
         System.out.println("demand: " + stockSimulatorDto.demand());
+        System.out.println("variation: " + stockSimulatorDto.variation());
 
         return "Stock created successfully with ticker" + stockSimulatorDto.ticker();
     }

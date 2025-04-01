@@ -6,23 +6,27 @@ class Stock {
 private:
     std::string ticker;
     std::string companyName;
-    double price = 0.0;
-    int totalShares;
-    int totalDemand;
+    long long price = 0;
+    long long  totalShares;
+    long long  totalDemand;
+    double formatedPrice;
+    double variation = 0.0;
 
 public:
     void setTicker(std::string ticker);
     void setCompanyName(std::string CompanyName);
-    void setPrice(double price);
-    void setTotalShares(int totalShares);
-    void setTotalDemand(int totalDemand);
+    void setPrice(long long price);
+    void setTotalShares(long long totalShares);
+    void setTotalDemand(long long totalDemand);
+    void setFormatedPrice(double price);
+    void setVariation(double variation);
+    double getFormatedPrice();
+    double getVariation();
     std::string getTicker();
     std::string getCompanyName();
-    double getPrice();
-    int getTotalShares();
-    int getTotalDemand();
+    long long getPrice();
+    long long getTotalShares();
+    long long getTotalDemand();
     void changePrice();
     void sendStockJson();
-    void smallRandomizeSharesAndDemand();
-
 };

@@ -44,10 +44,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/bin/cmake
+CMAKE_COMMAND = /home/vinicius/resourceProgram/clion-2024.3.4/bin/cmake/linux/x64/bin/cmake
 
 # The command to remove a file.
-RM = /home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/bin/cmake -E rm -f
+RM = /home/vinicius/resourceProgram/clion-2024.3.4/bin/cmake/linux/x64/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -97,32 +97,32 @@ CMakeFiles/financialMarketSimulator.dir/cppFiles/stock.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/financialMarketSimulator.dir/cppFiles/stock.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vinicius/projects/financialMarketSimulator/cppFiles/stock.cpp -o CMakeFiles/financialMarketSimulator.dir/cppFiles/stock.cpp.s
 
-CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.o: CMakeFiles/financialMarketSimulator.dir/flags.make
-CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.o: /home/vinicius/projects/financialMarketSimulator/cppFiles/market.cpp
-CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.o: CMakeFiles/financialMarketSimulator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vinicius/projects/financialMarketSimulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.o -MF CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.o.d -o CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.o -c /home/vinicius/projects/financialMarketSimulator/cppFiles/market.cpp
+CMakeFiles/financialMarketSimulator.dir/cppFiles/util.cpp.o: CMakeFiles/financialMarketSimulator.dir/flags.make
+CMakeFiles/financialMarketSimulator.dir/cppFiles/util.cpp.o: /home/vinicius/projects/financialMarketSimulator/cppFiles/util.cpp
+CMakeFiles/financialMarketSimulator.dir/cppFiles/util.cpp.o: CMakeFiles/financialMarketSimulator.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vinicius/projects/financialMarketSimulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/financialMarketSimulator.dir/cppFiles/util.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/financialMarketSimulator.dir/cppFiles/util.cpp.o -MF CMakeFiles/financialMarketSimulator.dir/cppFiles/util.cpp.o.d -o CMakeFiles/financialMarketSimulator.dir/cppFiles/util.cpp.o -c /home/vinicius/projects/financialMarketSimulator/cppFiles/util.cpp
 
-CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vinicius/projects/financialMarketSimulator/cppFiles/market.cpp > CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.i
+CMakeFiles/financialMarketSimulator.dir/cppFiles/util.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/financialMarketSimulator.dir/cppFiles/util.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vinicius/projects/financialMarketSimulator/cppFiles/util.cpp > CMakeFiles/financialMarketSimulator.dir/cppFiles/util.cpp.i
 
-CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vinicius/projects/financialMarketSimulator/cppFiles/market.cpp -o CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.s
+CMakeFiles/financialMarketSimulator.dir/cppFiles/util.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/financialMarketSimulator.dir/cppFiles/util.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vinicius/projects/financialMarketSimulator/cppFiles/util.cpp -o CMakeFiles/financialMarketSimulator.dir/cppFiles/util.cpp.s
 
 # Object files for target financialMarketSimulator
 financialMarketSimulator_OBJECTS = \
 "CMakeFiles/financialMarketSimulator.dir/main.cpp.o" \
 "CMakeFiles/financialMarketSimulator.dir/cppFiles/stock.cpp.o" \
-"CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.o"
+"CMakeFiles/financialMarketSimulator.dir/cppFiles/util.cpp.o"
 
 # External object files for target financialMarketSimulator
 financialMarketSimulator_EXTERNAL_OBJECTS =
 
 financialMarketSimulator: CMakeFiles/financialMarketSimulator.dir/main.cpp.o
 financialMarketSimulator: CMakeFiles/financialMarketSimulator.dir/cppFiles/stock.cpp.o
-financialMarketSimulator: CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.o
+financialMarketSimulator: CMakeFiles/financialMarketSimulator.dir/cppFiles/util.cpp.o
 financialMarketSimulator: CMakeFiles/financialMarketSimulator.dir/build.make
 financialMarketSimulator: /usr/lib/x86_64-linux-gnu/libcurl.so
 financialMarketSimulator: CMakeFiles/financialMarketSimulator.dir/link.txt

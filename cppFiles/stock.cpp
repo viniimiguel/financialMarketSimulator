@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <random>
 
 
 void Stock::setTicker(std::string ticker) {
@@ -11,36 +12,54 @@ void Stock::setTicker(std::string ticker) {
 void Stock::setCompanyName(std::string companyName) {
     this->companyName = companyName;
 }
-void Stock::setPrice(double price) {
+void Stock::setPrice(long long price) {
     this->price = price;
 }
-void Stock::setTotalShares(int totalShares) {
+void Stock::setTotalShares(long long totalShares) {
     this->totalShares = totalShares;
 }
-void Stock::setTotalDemand(int totalDemand) {
+void Stock::setTotalDemand(long long totalDemand) {
     this->totalDemand = totalDemand;
 }
+void Stock::setFormatedPrice(double price) {
+    this->formatedPrice = price;
+}
+void Stock::setVariation(double variation) {
+    this->variation = variation;
+}
 
+double Stock::getFormatedPrice() {
+    return this->formatedPrice;
+}
 std::string Stock::getCompanyName() {
     return companyName;
 }
 std::string Stock::getTicker() {
     return ticker;
 }
-int Stock::getTotalShares() {
+long long Stock::getTotalShares() {
     return totalShares;
 }
-double Stock::getPrice() {
+long long Stock::getPrice() {
     return price;
 }
-int Stock::getTotalDemand() {
+long long Stock::getTotalDemand() {
     return totalDemand;
 }
-void Stock::changePrice() {
-    if (totalShares + totalDemand == 0) return;
-    double imbalance = (totalDemand - totalShares) / static_cast<double>(totalShares + totalDemand);
-    price = price * (1 + imbalance);
+double Stock::getVariation() {
+    return variation;
 }
+
+void Stock::changePrice() {
+    static std::random_device rd;
+    static std::mt19937 gen(rd());
+    std::uniform_real_distribution<double> dist(-0.005, 0.005);
+    double variable = dist(gen);
+    price = static_cast<long long>(price * (1.0 + variable) + 0.5);
+    std::cout << "Variação: " << variable * 100 << "% | Novo Preço: " << price << std::endl;
+    variation = variable * 100;
+}
+
 
 void Stock::sendStockJson() {
     CURL *curl;
@@ -48,9 +67,12 @@ void Stock::sendStockJson() {
     std::string json_data = "{"
         "\"ticker\": \"" + getTicker() + "\", "
         "\"companyName\": \"" + getCompanyName() + "\", "
-        "\"price\": " + std::to_string(getPrice()) + ", "
+        "\"price\": " + std::to_string(getFormatedPrice()) + ", "
         "\"shares\": " + std::to_string(getTotalShares()) + ", "
-        "\"demand\": " + std::to_string(getTotalDemand()) +
+        "\"demand\": " + std::to_string(getTotalDemand()) + ", "
+        "\"variation\": " + std::to_string(getVariation()) +
+
+
     "}";
 
     curl_global_init(CURL_GLOBAL_DEFAULT);
@@ -84,10 +106,3 @@ void Stock::sendStockJson() {
 
     curl_global_cleanup();
 }
-
-void Stock::smallRandomizeSharesAndDemand() {
-
-}
-
-
-

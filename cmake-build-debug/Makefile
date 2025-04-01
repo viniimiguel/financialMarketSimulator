@@ -48,10 +48,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/bin/cmake
+CMAKE_COMMAND = /home/vinicius/resourceProgram/clion-2024.3.4/bin/cmake/linux/x64/bin/cmake
 
 # The command to remove a file.
-RM = /home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/bin/cmake -E rm -f
+RM = /home/vinicius/resourceProgram/clion-2024.3.4/bin/cmake/linux/x64/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /home/vinicius/projects/financialMarketSimulator/cmake-build-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
-	/home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/vinicius/resourceProgram/clion-2024.3.4/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -78,7 +78,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake to regenerate build system..."
-	/home/vinicius/resourcePrograms/clion-2024.3.4/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/vinicius/resourceProgram/clion-2024.3.4/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -129,30 +129,6 @@ financialMarketSimulator/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/financialMarketSimulator.dir/build.make CMakeFiles/financialMarketSimulator.dir/build
 .PHONY : financialMarketSimulator/fast
 
-cppFiles/market.o: cppFiles/market.cpp.o
-.PHONY : cppFiles/market.o
-
-# target to build an object file
-cppFiles/market.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/financialMarketSimulator.dir/build.make CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.o
-.PHONY : cppFiles/market.cpp.o
-
-cppFiles/market.i: cppFiles/market.cpp.i
-.PHONY : cppFiles/market.i
-
-# target to preprocess a source file
-cppFiles/market.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/financialMarketSimulator.dir/build.make CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.i
-.PHONY : cppFiles/market.cpp.i
-
-cppFiles/market.s: cppFiles/market.cpp.s
-.PHONY : cppFiles/market.s
-
-# target to generate assembly for a file
-cppFiles/market.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/financialMarketSimulator.dir/build.make CMakeFiles/financialMarketSimulator.dir/cppFiles/market.cpp.s
-.PHONY : cppFiles/market.cpp.s
-
 cppFiles/stock.o: cppFiles/stock.cpp.o
 .PHONY : cppFiles/stock.o
 
@@ -176,6 +152,30 @@ cppFiles/stock.s: cppFiles/stock.cpp.s
 cppFiles/stock.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/financialMarketSimulator.dir/build.make CMakeFiles/financialMarketSimulator.dir/cppFiles/stock.cpp.s
 .PHONY : cppFiles/stock.cpp.s
+
+cppFiles/util.o: cppFiles/util.cpp.o
+.PHONY : cppFiles/util.o
+
+# target to build an object file
+cppFiles/util.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/financialMarketSimulator.dir/build.make CMakeFiles/financialMarketSimulator.dir/cppFiles/util.cpp.o
+.PHONY : cppFiles/util.cpp.o
+
+cppFiles/util.i: cppFiles/util.cpp.i
+.PHONY : cppFiles/util.i
+
+# target to preprocess a source file
+cppFiles/util.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/financialMarketSimulator.dir/build.make CMakeFiles/financialMarketSimulator.dir/cppFiles/util.cpp.i
+.PHONY : cppFiles/util.cpp.i
+
+cppFiles/util.s: cppFiles/util.cpp.s
+.PHONY : cppFiles/util.s
+
+# target to generate assembly for a file
+cppFiles/util.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/financialMarketSimulator.dir/build.make CMakeFiles/financialMarketSimulator.dir/cppFiles/util.cpp.s
+.PHONY : cppFiles/util.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -210,12 +210,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... financialMarketSimulator"
-	@echo "... cppFiles/market.o"
-	@echo "... cppFiles/market.i"
-	@echo "... cppFiles/market.s"
 	@echo "... cppFiles/stock.o"
 	@echo "... cppFiles/stock.i"
 	@echo "... cppFiles/stock.s"
+	@echo "... cppFiles/util.o"
+	@echo "... cppFiles/util.i"
+	@echo "... cppFiles/util.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
