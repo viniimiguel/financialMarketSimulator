@@ -1,4 +1,6 @@
 package com.finance.finance.dto;
 
-public record WalletDto() {
+import com.finance.finance.entity.User;
+
+public record WalletDto(Double balance, User user) {
 }

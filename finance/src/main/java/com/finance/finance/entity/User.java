@@ -1,19 +1,21 @@
 package com.finance.finance.entity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+
+import jakarta.persistence.*;
+
 @Entity
 @Table(name = "users")
-
 public class User {
     @Id
     @GeneratedValue
     private Integer id;
+
     private String name;
     private String email;
     private String password;
     private String role;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private WalletEntity wallet;
 
     public void setRole(String role) {
         this.role = role;
@@ -65,5 +67,13 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public WalletEntity getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(WalletEntity wallet) {
+        this.wallet = wallet;
     }
 }
