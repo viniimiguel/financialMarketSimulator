@@ -1,4 +1,4 @@
-ToolSet: 1.0 (local)Ninja: 1.12.1@/home/vinicius/resourceProgram/clion-2024.3.4/bin/ninja/linux/x64/ninja
+ToolSet: 1.0 (local)Ninja: 1.12.1@/home/vinicius/resourcePrograms/clion-2024.3.4/bin/ninja/linux/x64/ninja
 Options: 
 
 Options:
