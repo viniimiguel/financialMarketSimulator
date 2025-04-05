@@ -1,0 +1,7 @@
+sempre ao clonar o repositorio fazer o build do cmake manualmente:
+
+rm -rf cmake-build-debug << caso a pasta esteja presente.
+mkdir cmake-build-debug
+cd cmake-build-debug
+cmake ..
+make
