@@ -46,6 +46,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/wallet/create").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/simulator/stock/all").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/simulator/stock/{ticket}").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/orders/buy").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/orders/sell").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
