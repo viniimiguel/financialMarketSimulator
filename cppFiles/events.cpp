@@ -40,7 +40,6 @@ void Event::randomizeFall(std::vector<Stock> &stocks) {
     }
     double randomMultiplier = 0.1 + (std::rand() % 81) / 100.00;
     int variation = static_cast<int>((randomMultiplier - 1.0) * 100);
-    std::cout << "valor randomico: " << randomMultiplier << "valor variation: "<< variation<<std::endl;
     randomize(stocks, randomMultiplier, variation);
 }
 
@@ -52,7 +51,6 @@ void Event::randomizeGain(std::vector<Stock> &stocks) {
     }
     double randomMultiplier = 1.1 + (std::rand() % 81) / 100.00;
     int variation = static_cast<int>((randomMultiplier - 1.0) * 100);
-    std::cout << "valor randomico: " << randomMultiplier << "valor variation: "<< variation<<std::endl;
     randomize(stocks, randomMultiplier, variation);
 }
 void Event::randomizeBigFall(std::vector<Stock> &stocks) {

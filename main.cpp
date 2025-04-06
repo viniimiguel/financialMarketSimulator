@@ -43,12 +43,7 @@ int main() {
         }
 
         for (auto& stock : stocks) {
-            stock.sendStockJson();
-        }
-
-        for (auto& stock : stocks) {
             auto money = u1.convertCentsToUnit(stock.getPrice());
-
             stock.setFormatedPrice(money);
             stock.changePrice();
             std::cout << "Updated Ticker: " << stock.getTicker() << "\n";
@@ -57,11 +52,13 @@ int main() {
             std::cout << "variation: " << stock.getVariation() << "%" << "\n";
             std::cout << "-----------------------------\n";
             std::cout << "numero de iteracoes: " << count << std::endl;
-            e1.randomizeGain(stocks);
-            e1.randomizeFall(stocks);
-
             count++;
         }
-        std::this_thread::sleep_for(std::chrono::seconds(10));
+
+
+        for (auto& stock : stocks) {
+            stock.sendStockJson();
+        }
+        std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 }
