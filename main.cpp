@@ -24,6 +24,7 @@ int main() {
         auto elapsed_big_fall = std::chrono::duration_cast<std::chrono::minutes>(now - last_big_fall).count();
         auto elapsed_big_gain = std::chrono::duration_cast<std::chrono::minutes>(now - last_big_gain).count();
 
+
         if (elapsed_fall >= 50) {
             e1.randomizeFall(stocks);
             last_fall = now;
@@ -47,6 +48,7 @@ int main() {
 
         for (auto& stock : stocks) {
             auto money = u1.convertCentsToUnit(stock.getPrice());
+
             stock.setFormatedPrice(money);
             stock.changePrice();
             std::cout << "Updated Ticker: " << stock.getTicker() << "\n";
@@ -55,8 +57,11 @@ int main() {
             std::cout << "variation: " << stock.getVariation() << "%" << "\n";
             std::cout << "-----------------------------\n";
             std::cout << "numero de iteracoes: " << count << std::endl;
+            e1.randomizeGain(stocks);
+            e1.randomizeFall(stocks);
+
             count++;
         }
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::this_thread::sleep_for(std::chrono::seconds(10));
     }
 }

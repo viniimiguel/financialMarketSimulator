@@ -1,1 +1,0 @@
-/usr/bin/c++ -g CMakeFiles/financialMarketSimulator.dir/main.cpp.o CMakeFiles/financialMarketSimulator.dir/cppFiles/stock.cpp.o CMakeFiles/financialMarketSimulator.dir/cppFiles/util.cpp.o CMakeFiles/financialMarketSimulator.dir/cppFiles/stocks.cpp.o CMakeFiles/financialMarketSimulator.dir/cppFiles/events.cpp.o -o financialMarketSimulator  /usr/lib/x86_64-linux-gnu/libcurl.so 
