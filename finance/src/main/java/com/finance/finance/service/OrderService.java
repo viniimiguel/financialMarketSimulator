@@ -3,9 +3,11 @@ package com.finance.finance.service;
 import com.finance.finance.dto.BuyStockDto;
 import com.finance.finance.dto.SellStockDto;
 import com.finance.finance.dto.StockSimulatorDto;
+import com.finance.finance.entity.MyStocksEntity;
 import com.finance.finance.entity.OrderEntity;
 import com.finance.finance.entity.User;
 import com.finance.finance.entity.WalletEntity;
+import com.finance.finance.repository.MyStocksRepository;
 import com.finance.finance.repository.OrderRepository;
 import com.finance.finance.repository.UserRepository;
 import com.finance.finance.repository.WalletRepository;
@@ -14,19 +16,22 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrderService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+    private final WalletRepository walletRepository;
+    private final OrderRepository orderRepository;
+    private final SimulatorService simulatorService;
+    private final MyStocksRepository myStocksRepository;
 
-    private WalletRepository walletRepository;
-
-    private OrderRepository orderRepository;
-
-    private SimulatorService simulatorService;
-
-    public OrderService(UserRepository userRepository, SimulatorService simulatorService, OrderRepository orderRepository, WalletRepository walletRepository) {
+    public OrderService(UserRepository userRepository,
+                        SimulatorService simulatorService,
+                        OrderRepository orderRepository,
+                        WalletRepository walletRepository,
+                        MyStocksRepository myStocksRepository) {
         this.userRepository = userRepository;
         this.simulatorService = simulatorService;
         this.orderRepository = orderRepository;
         this.walletRepository = walletRepository;
+        this.myStocksRepository = myStocksRepository;
     }
 
     public String buyStock(BuyStockDto dto) {
@@ -34,6 +39,12 @@ public class OrderService {
                 .orElseThrow(() -> new RuntimeException("User Not Found"));
 
         WalletEntity wallet = user.getWallet();
+
+        MyStocksEntity walletStock = myStocksRepository.findByWalletAndTicker(wallet, dto.ticker())
+                .orElseGet(() -> new MyStocksEntity(wallet, dto.ticker(), 0));
+
+        walletStock.setQuantity(walletStock.getQuantity() + dto.quantity());
+        myStocksRepository.save(walletStock);
 
         StockSimulatorDto stock = simulatorService.getStock(dto.ticker());
         if (stock == null) {
@@ -46,6 +57,7 @@ public class OrderService {
         }
 
         wallet.setBalance(wallet.getBalance() - totalCost);
+
         OrderEntity order = new OrderEntity(
                 "BUY",
                 dto.ticker(),
@@ -61,7 +73,7 @@ public class OrderService {
 
     public String sellStock(SellStockDto dto) {
         User user = userRepository.findById(dto.userId())
-                .orElseThrow(()-> new RuntimeException("User Not Found"));
+                .orElseThrow(() -> new RuntimeException("User Not Found"));
 
         WalletEntity wallet = user.getWallet();
 
@@ -70,13 +82,23 @@ public class OrderService {
             throw new RuntimeException("Stock Not Found");
         }
 
-        Integer currentyQuantity = orderRepository.getNetStockQuantity(wallet.getId(), dto.ticker());
-        if(currentyQuantity == null || currentyQuantity < dto.quantity()) {
+        MyStocksEntity walletStock = myStocksRepository.findByWalletAndTicker(wallet, dto.ticker())
+                .orElseThrow(() -> new RuntimeException("You don't own this stock"));
+
+        if (walletStock.getQuantity() < dto.quantity()) {
             throw new RuntimeException("Not enough shares to sell");
         }
 
-        double totalGain = stock.price() * dto.quantity();
+        // Atualiza a quantidade
+        int updatedQuantity = walletStock.getQuantity() - dto.quantity();
+        if (updatedQuantity == 0) {
+            myStocksRepository.delete(walletStock);
+        } else {
+            walletStock.setQuantity(updatedQuantity);
+            myStocksRepository.save(walletStock);
+        }
 
+        double totalGain = stock.price() * dto.quantity();
         wallet.setBalance(wallet.getBalance() + totalGain);
 
         OrderEntity order = new OrderEntity(
@@ -89,8 +111,7 @@ public class OrderService {
 
         orderRepository.save(order);
         walletRepository.save(wallet);
+
         return "Sell accomplished";
-
     }
-
 }
