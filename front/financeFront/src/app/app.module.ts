@@ -8,6 +8,8 @@ import { FooterComponentComponent } from './components/footer-component/footer-c
 import { NavComponentComponent } from './components/nav-component/nav-component.component';
 import { LoginComponentComponent } from './components/login-component/login-component.component';
 import { RegisterComponentComponent } from './components/register-component/register-component.component';
+import { RecoveryPasswordComponentComponent } from './components/recovery-password-component/recovery-password-component.component';
+import { NewPasswordComponentComponent } from './components/new-password-component/new-password-component.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { RegisterComponentComponent } from './components/register-component/regi
     FooterComponentComponent,
     NavComponentComponent,
     LoginComponentComponent,
-    RegisterComponentComponent
+    RegisterComponentComponent,
+    RecoveryPasswordComponentComponent,
+    NewPasswordComponentComponent
   ],
   imports: [
     BrowserModule,
