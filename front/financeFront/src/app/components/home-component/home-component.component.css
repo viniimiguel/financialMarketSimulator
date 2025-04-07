@@ -3,7 +3,6 @@
     flex-direction: column;
     align-items: flex-end;
     justify-content: center;
-    padding-right: 60px;
     gap: 30px;
     width: 100%;
     height: 100%;
@@ -135,6 +134,8 @@
     padding: 8px 14px;
     border-radius: 8px;
     transition: all 0.2s ease-in-out;
+    height: 50px;
+    width: 300px;
 }
 .btn-start-now:hover{
     background-color: #249a60;
