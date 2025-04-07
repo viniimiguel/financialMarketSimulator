@@ -3,7 +3,6 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserLogAndRegComponentComponent } from './components/user-log-and-reg-component/user-log-and-reg-component.component';
 import { HomeComponentComponent } from './components/home-component/home-component.component';
 import { FooterComponentComponent } from './components/footer-component/footer-component.component';
 import { NavComponentComponent } from './components/nav-component/nav-component.component';
@@ -13,7 +12,6 @@ import { RegisterComponentComponent } from './components/register-component/regi
 @NgModule({
   declarations: [
     AppComponent,
-    UserLogAndRegComponentComponent,
     HomeComponentComponent,
     FooterComponentComponent,
     NavComponentComponent,
