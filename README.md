@@ -1,8 +1,15 @@
+
+
 # 📈 Simulador de Mercado de Ações
 
 Bem-vindo ao **Simulador de Mercado de Ações**, um projeto completo com back-end em Java (Spring Boot), C++ para cálculos de alta performance e front-end em Angular.
 
 Neste simulador, você poderá **comprar e vender ações** com o objetivo de **obter lucro**, enfrentando a volatilidade natural de um mercado financeiro. É uma ótima forma de entender o funcionamento de uma bolsa de valores em um ambiente controlado, interativo e educativo.
+
+<h1>Front em desenvolvimento</h1>
+
+https://github.com/user-attachments/assets/06554523-8eda-4275-9f77-7042606361af
+
 
 ---
 
