@@ -1,0 +1,124 @@
+.userWallet{
+    position: relative;
+    margin-left: 250px;
+    margin-top: 36px;
+    color: #EDEDED;
+    border: 1px solid #3E4451;
+    border-radius: 12px;
+    padding: 30px 40px;
+    width: 800px;
+}
+.userWallet h2{
+    font-size: 24px;
+    margin-bottom: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-bottom: 2px solid #7F5AF0;;
+    display: inline-block;
+    padding-bottom: 4px;
+}
+.stock-item{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0px;
+    border-bottom: 1px solid #3E4451;
+    font-size: 14px;
+}
+.stock-symbol {
+    font-weight: bold;
+    color: #EDEDED;
+    flex: 1;
+}
+
+.stock-price {
+    color: #C1C1C1;
+    flex: 1;
+    text-align: right;
+}
+
+.stock-change {
+    font-weight: bold;
+    flex: 1;
+    text-align: right;
+}
+
+.stock-change.positive {
+    color: #22C55E;
+}
+
+.stock-change.negative {
+    color: #EF4444;
+}
+.btns button{
+    background: none;
+    border: none;
+    color: #B0B3BD;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+}
+.btns button:hover{
+    color: #00AEEF;
+}
+
+.btns button:not(:last-child) {
+    margin-right: 10px;
+}
+.notice {
+    position: relative;
+    margin-left: 250px;
+    margin-top: 36px;
+    color: #EDEDED;
+    border: 1px solid #3E4451;
+    border-radius: 12px;
+    padding: 30px 40px;
+    width: 800px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.notice h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-bottom: 2px solid #7F5AF0;
+    display: inline-block;
+    padding-bottom: 4px;
+}
+
+.notice p {
+    font-weight: 400;
+    line-height: 1.6;
+    font-size: 16px;
+    color: #B0BEC5;
+    text-align: justify;
+    margin-top: 12px;
+}
+.balance {
+    position: relative;
+    margin-left: 250px;
+    margin-top: 36px;
+    color: #EDEDED;
+    border: 1px solid #3E4451;
+    border-radius: 12px;
+    padding: 20px 30px;
+    width: 800px;
+    background-color: #2C313C; /* Fundo mais moderno */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.balance h2 {
+    color: #B0BEC5;
+    margin: 10px 0;
+    font-weight: 500;
+}
+
+.balance h2:first-child {
+    font-size: 20px;
+    font-weight: bold;
+    color: #7F5AF0;
+}
+
+.balance h2:last-child {
+    font-size: 18px;
+    color: #B0BEC5;
+}

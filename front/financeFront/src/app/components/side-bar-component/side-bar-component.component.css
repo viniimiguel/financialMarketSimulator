@@ -1,0 +1,24 @@
+.sideBar {
+    width: 200px;
+    height: 60vh; 
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+}
+.sideBarOp ul {
+    list-style: none;
+    padding: 0 14px;
+}
+
+
+.sideBarOp ul li a {
+    text-decoration: none;
+    display: block;
+    padding: 15px;
+    transition: background-color 0.3s, color 0.3s;
+    color: #B0B3BD;
+}
+
+.sideBarOp ul li a:hover {
+    color: #00AEEF;
+}

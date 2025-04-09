@@ -1,8 +1,8 @@
 <div class="container">
+  <div class="wrapper">
     <app-nav-component></app-nav-component>
-    <div class="wrapper">
-      <router-outlet></router-outlet>
-    </div>
-    <app-footer-component></app-footer-component>
+    <app-side-bar-component *ngIf="isUserPanel"></app-side-bar-component>
+    <router-outlet></router-outlet>
   </div>
-  
+  <app-footer-component></app-footer-component>
+</div>

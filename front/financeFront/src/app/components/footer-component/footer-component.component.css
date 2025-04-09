@@ -2,6 +2,7 @@
 .footer-component {
     padding: 20px 30px;
     color: #9DA5B4;
+    position: relative;
   }
 
 .footer-container {

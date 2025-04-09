@@ -10,6 +10,9 @@ import { LoginComponentComponent } from './components/login-component/login-comp
 import { RegisterComponentComponent } from './components/register-component/register-component.component';
 import { RecoveryPasswordComponentComponent } from './components/recovery-password-component/recovery-password-component.component';
 import { NewPasswordComponentComponent } from './components/new-password-component/new-password-component.component';
+import { SideBarComponentComponent } from './components/side-bar-component/side-bar-component.component';
+import { UserPainelComponentComponent } from './components/user-painel-component/user-painel-component.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { NewPasswordComponentComponent } from './components/new-password-compone
     LoginComponentComponent,
     RegisterComponentComponent,
     RecoveryPasswordComponentComponent,
-    NewPasswordComponentComponent
+    NewPasswordComponentComponent,
+    SideBarComponentComponent,
+    UserPainelComponentComponent,
   ],
   imports: [
     BrowserModule,
