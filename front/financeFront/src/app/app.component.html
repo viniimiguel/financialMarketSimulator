@@ -1,7 +1,7 @@
 <div class="container">
   <div class="wrapper">
     <app-nav-component></app-nav-component>
-    <app-side-bar-component *ngIf="isUserPanel"></app-side-bar-component>
+    <app-side-bar-component *ngIf="isSidebarVisible"></app-side-bar-component>
     <router-outlet></router-outlet>
   </div>
   <app-footer-component></app-footer-component>

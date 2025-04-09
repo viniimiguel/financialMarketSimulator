@@ -12,6 +12,7 @@ import { RecoveryPasswordComponentComponent } from './components/recovery-passwo
 import { NewPasswordComponentComponent } from './components/new-password-component/new-password-component.component';
 import { SideBarComponentComponent } from './components/side-bar-component/side-bar-component.component';
 import { UserPainelComponentComponent } from './components/user-painel-component/user-painel-component.component';
+import { MyTransationComponentComponent } from './components/my-transation-component/my-transation-component.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { UserPainelComponentComponent } from './components/user-painel-component
     NewPasswordComponentComponent,
     SideBarComponentComponent,
     UserPainelComponentComponent,
+    MyTransationComponentComponent,
   ],
   imports: [
     BrowserModule,

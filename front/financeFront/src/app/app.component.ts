@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +9,16 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'financeFront';
-  isUserPanel: boolean = false;
+  isSidebarVisible: boolean = false;
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.router.events.subscribe(() => {
-      this.isUserPanel = this.router.url.includes('user-painel');
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        const routesWithSidebar = ['/user-painel', '/my-transation'];
+        this.isSidebarVisible = routesWithSidebar.includes(this.router.url);
+      }
     });
   }
 }

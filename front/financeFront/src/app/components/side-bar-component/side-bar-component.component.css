@@ -15,10 +15,16 @@
     text-decoration: none;
     display: block;
     padding: 15px;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, color 0.3s, border-bottom 0.3s;
     color: #B0B3BD;
+}
+
+.sideBarOp ul li a.active {
+    border-bottom: 2px solid #00AEEF;
+    color: #00AEEF;
 }
 
 .sideBarOp ul li a:hover {
     color: #00AEEF;
 }
+

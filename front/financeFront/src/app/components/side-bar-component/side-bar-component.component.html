@@ -1,13 +1,41 @@
 <div class="sideBar">
     <div class="sideBarOp">
         <ul>
-            <li><a href="#">Minha carteira</a></li>
-            <li><a href="#">Transações</a></li>
-            <li><a href="#">Comprar ações</a></li>
-            <li><a href="#">Comprar criptos</a></li>
-            <li><a href="#">Vender ações</a></li>
-            <li><a href="#">Vender criptos</a></li>
-            <li><a href="#">Indicações</a></li>
+            <li>
+                <a 
+                    [routerLink]="'/user-painel'" 
+                    [ngClass]="{'active': selectedLink === 'Minha carteira'}" 
+                    (click)="selectLink('Minha carteira')"
+                >Minha carteira</a>
+            </li>
+            <li>
+                <a 
+                    [routerLink]="'/my-transation'" 
+                    [ngClass]="{'active': selectedLink === 'Transações'}" 
+                    (click)="selectLink('Transações')"
+                >Transações</a>
+            </li>
+            <li>
+                <a 
+                    href="#" 
+                    [ngClass]="{'active': selectedLink === 'Comprar e vender ações'}" 
+                    (click)="selectLink('Comprar e vender ações')"
+                >Comprar e vender ações</a>
+            </li>
+            <li>
+                <a 
+                    href="#" 
+                    [ngClass]="{'active': selectedLink === 'Comprar e vender criptos'}" 
+                    (click)="selectLink('Comprar e vender criptos')"
+                >Comprar e vender criptos</a>
+            </li>
+            <li>
+                <a 
+                    href="#" 
+                    [ngClass]="{'active': selectedLink === 'Indique um amigo'}" 
+                    (click)="selectLink('Indique um amigo')"
+                >Indique um amigo</a>
+            </li>
         </ul>
     </div>
 </div>
