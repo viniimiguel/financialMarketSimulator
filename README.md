@@ -6,6 +6,11 @@ Bem-vindo ao **Simulador de Mercado de Ações**, um projeto completo com back-e
 
 Neste simulador, você poderá **comprar e vender ações** com o objetivo de **obter lucro**, enfrentando a volatilidade natural de um mercado financeiro. É uma ótima forma de entender o funcionamento de uma bolsa de valores em um ambiente controlado, interativo e educativo.
 
+Freatures futuras:
+- Criação de mercado de criptomoedas
+- Criação de eventos ligados a noticias
+- Especificar países das ações
+
 <h1>Front em desenvolvimento</h1>
 
 https://github.com/user-attachments/assets/06554523-8eda-4275-9f77-7042606361af
