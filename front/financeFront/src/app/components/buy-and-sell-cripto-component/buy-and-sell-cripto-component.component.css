@@ -1,0 +1,100 @@
+.buyAndSellContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.buyCriptoContainer {
+    position: relative;
+    margin-left: 250px;
+    margin-top: 36px;
+    color: #EDEDED;
+    border: 1px solid #3E4451;
+    border-radius: 12px;
+    padding: 30px 40px;
+    width: 400px;
+}
+.buyCriptoContainer h1{
+    font-size: 24px;
+    margin-bottom: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-bottom: 2px solid #7F5AF0;
+    display: inline-block;
+    padding-bottom: 4px;
+}
+.sellCriptoContainer h1{
+    font-size: 24px;
+    margin-bottom: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-bottom: 2px solid #7F5AF0;
+    display: inline-block;
+    padding-bottom: 4px;
+}
+
+.sellCriptoContainer {
+    position: relative;
+    margin-left: 100px;
+    margin-top: 36px;
+    color: #EDEDED;
+    border: 1px solid #3E4451;
+    border-radius: 12px;
+    padding: 30px 40px;
+    width: 400px;
+    min-height: 250px;
+}
+#options{
+    width: 100%;
+    min-height: 60px;
+    background: none;
+    border: 1px solid #3E4451;
+    border-radius: 14px;
+    color: #B0B3BD;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+#btn{
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+    margin-top: 12px;
+    background-color: #2BB673;
+    color: #FFFFFF;
+    width: 50%;
+    min-height: 40px;
+}
+
+#btn:hover{
+    background-color: #249a60;
+}
+
+#quantity{
+    width: 100%;
+    min-height: 60px;
+    background: none;
+    border: 1px solid #3E4451;
+    border-radius: 14px;
+    color: #B0B3BD;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+#quantity::-webkit-inner-spin-button,
+#quantity::-webkit-outer-spin-button {
+    background: none;
+    border: none; 
+}
+#quantity {
+    appearance: textfield;
+}
+.value-to-pay{
+    color: #B0B3BD;
+    margin-top: 0;
+}

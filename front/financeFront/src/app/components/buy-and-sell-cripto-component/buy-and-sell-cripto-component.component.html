@@ -1,0 +1,38 @@
+<div class="buyAndSellContainer">
+    <div class="buyCriptoContainer">
+        <h1>Comprar cripto</h1>
+        <h2>Saldo Atual: 87.23$</h2>
+        <form action="/submit" method="post">
+            <div class="inputs">
+                <label for="options">Escolha a cripto:</label>
+                <select id="options" name="options">
+                    <option value="option1">BTC 73.093.344$</option>
+                    <option value="option2">ETH 4000$</option>
+                    <option value="option3">DODGE 0.034$</option>
+                </select>
+                <label for="quantity">Escolha a quantidade:</label>
+                <input id="quantity" name="quantity" type="number" min="1" max="10" step="1" value="1">
+            </div>
+            <p class="value-to-pay">Valor a pagar: 73.093.344$</p>
+            <button id="btn" type="submit">Comprar</button>
+        </form>
+    </div>
+    <div class="sellCriptoContainer">
+        <h1>Vender Cripto</h1>
+        <h2>Saldo Atual: 87.23$</h2>
+        <form action="/submit" method="post">
+            <div class="inputs">
+                <label for="options">Escolha a cripto:</label>
+                <select id="options" name="options">
+                    <option value="option1">BTC 73.093.344$</option>
+                    <option value="option2">ETH 4000$</option>
+                    <option value="option3">DODGE 0.034$</option>
+                </select>
+                <label for="quantity">Escolha a quantidade:</label>
+                <input id="quantity" name="quantity" type="number" min="1" max="10" step="1" value="1">
+            </div>
+            <p class="value-to-pay">Valor a Receber: 73.093.344$</p>
+            <button id="btn" type="submit">Vender</button>
+        </form>
+    </div>
+</div>

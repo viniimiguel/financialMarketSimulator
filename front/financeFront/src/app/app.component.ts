@@ -16,7 +16,7 @@ export class AppComponent {
   ngOnInit(): void {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        const routesWithSidebar = ['/user-painel', '/my-transation'];
+        const routesWithSidebar = ['/user-painel', '/my-transation', '/stock-order', '/cripto-order'];
         this.isSidebarVisible = routesWithSidebar.includes(this.router.url);
       }
     });

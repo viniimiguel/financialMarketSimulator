@@ -29,6 +29,8 @@ export class SideBarComponentComponent implements OnInit {
     const routeMap: { [key: string]: string } = {
       '/user-painel': 'Minha carteira',
       '/my-transation': 'Transações',
+      '/stock-order': 'Comprar e vender ações',
+      '/cripto-order': 'Comprar e vender criptos'
     };
 
     return routeMap[this.router.url] || '';
