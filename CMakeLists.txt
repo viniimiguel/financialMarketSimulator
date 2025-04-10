@@ -18,6 +18,11 @@ add_executable(financialMarketSimulator
         cppFiles/stocks.cpp
         headerFiles/events.h
         cppFiles/events.cpp
+        headerFiles/cripto.h
+        cppFiles/criptos.cpp
+        cppFiles/cripto.cpp
+        groqIa/groq.cpp
+        groqIa/groq.h
 )
 
 target_link_libraries(financialMarketSimulator ${CURL_LIBRARIES})

@@ -5,7 +5,6 @@
 #include <ctime>
 #include <random>
 
-
 void Stock::setTicker(std::string ticker) {
     this->ticker = ticker;
 }
@@ -24,6 +23,19 @@ void Stock::setVariation(double variation) {
 
 double Stock::getFormatedPrice() {
     return this->formatedPrice;
+}
+void Stock::setCountry(std::string country) {
+    this->country = country;
+}
+void Stock::setSector(std::string sector) {
+    this->sector = sector;
+}
+
+std::string Stock::getCountry() {
+    return this->country;
+}
+std::string Stock::getSector() {
+    return this->sector;
 }
 std::string Stock::getCompanyName() {
     return companyName;
@@ -56,6 +68,8 @@ void Stock::sendStockJson() {
         "\"ticker\": \"" + getTicker() + "\", "
         "\"companyName\": \"" + getCompanyName() + "\", "
         "\"price\": " + std::to_string(getFormatedPrice()) + ", "
+        "\"country\": " + getCountry() + ", "
+        "\"sector\": " + getSector() + ", "
         "\"variation\": " + std::to_string(getVariation()) +
     "}";
 

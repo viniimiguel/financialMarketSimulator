@@ -1,4 +1,6 @@
-#pragma once
+
+#ifndef STOCK_H
+#define STOCK_H
 
 #include <string>
 #include <vector>
@@ -10,12 +12,17 @@ private:
     long long price = 0;
     double formatedPrice;
     double variation = 0.0;
+    std::string country;
+    std::string sector;
 
 public:
-    Stock(const std::string &ticker, const std::string &company_name, long long price)
+    Stock(const std::string &ticker, const std::string &company_name, long long price, const std::string &country,
+        const std::string &sector)
         : ticker(ticker),
           companyName(company_name),
-          price(price) {
+          price(price),
+          country(country),
+          sector(sector) {
     }
 
     void setTicker(std::string ticker);
@@ -23,6 +30,10 @@ public:
     void setPrice(long long price);
     void setFormatedPrice(double price);
     void setVariation(double variation);
+    void setCountry(std::string country);
+    void setSector(std::string sector);
+    std::string getCountry();
+    std::string getSector();
     double getFormatedPrice();
     double getVariation();
     std::string getTicker();
@@ -33,3 +44,4 @@ public:
 };
 
 extern std::vector<Stock> stocks;
+#endif
