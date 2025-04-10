@@ -23,6 +23,8 @@ add_executable(financialMarketSimulator
         cppFiles/cripto.cpp
         groqIa/groq.cpp
         groqIa/groq.h
+        groqIa/api.cpp
+        groqIa/api.h
 )
 
 target_link_libraries(financialMarketSimulator ${CURL_LIBRARIES})

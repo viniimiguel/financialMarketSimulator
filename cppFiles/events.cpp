@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <random>
 
 void Event::randomize(std::vector<Stock> &stocks, double percent, double variation) {
     if (stocks.empty()) return;
@@ -31,31 +32,41 @@ void Event::randomize(std::vector<Stock> &stocks, double percent, double variati
               << " agora vale: " << stocks[index].getPrice()
               << " variação de: " << stocks[index].getVariation() << std::endl;
 }
+void Event::changePriceBySector(const std::string& targetSector) {
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<> dis(10.0, 100.0);
 
-void Event::randomizeFall(std::vector<Stock> &stocks) {
-    static bool seeded = false;
-    if (!seeded) {
-        std::srand(static_cast<unsigned int>(time(nullptr)));
-        seeded = true;
+    for (auto& stock : stocks) {
+        if (stock.getSector() == targetSector) {
+            double percentageChange = dis(gen); // Gera um número aleatório no intervalo
+
+            long long currentPrice = stock.getPrice();
+            if (currentPrice <= 0) {
+                std::cerr << "[ERRO] Preço inválido para " << stock.getCompanyName()
+                          << ": " << currentPrice << "\n";
+                continue; // Pula para o próximo elemento
+            }
+
+            // Calcula o novo preço
+            double newPriceDouble = static_cast<double>(currentPrice) * (1.0 + percentageChange / 100.0);
+            long long newPrice = static_cast<long long>(newPriceDouble);
+
+            // Verifica se o novo preço é válido
+            if (newPrice <= 0) {
+                newPrice = 1; // Evita valores inválidos
+            }
+
+            // Atualiza os valores do estoque
+            stock.setPrice(newPrice);
+            stock.setVariation(percentageChange);
+
+            // Exibe os detalhes
+            std::cout << "Empresa: " << stock.getCompanyName()
+                      << " | Preço Antigo: " << currentPrice
+                      << " | Novo Preço: " << stock.getPrice()
+                      << " | Variação: " << stock.getVariation() << "%\n";
+        }
     }
-    double randomMultiplier = 0.1 + (std::rand() % 81) / 100.00;
-    int variation = static_cast<int>((randomMultiplier - 1.0) * 100);
-    randomize(stocks, randomMultiplier, variation);
 }
 
-void Event::randomizeGain(std::vector<Stock> &stocks) {
-    static bool seeded = false;
-    if (!seeded) {
-        std::srand(static_cast<unsigned int>(time(nullptr)));
-        seeded = true;
-    }
-    double randomMultiplier = 1.1 + (std::rand() % 81) / 100.00;
-    int variation = static_cast<int>((randomMultiplier - 1.0) * 100);
-    randomize(stocks, randomMultiplier, variation);
-}
-void Event::randomizeBigFall(std::vector<Stock> &stocks) {
-    randomize(stocks, 0.1, -90 );
-}
-void Event::randomizeBigGain(std::vector<Stock> &stocks) {
-    randomize(stocks, 2.0, 100);
-}

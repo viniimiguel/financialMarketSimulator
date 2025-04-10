@@ -6,10 +6,8 @@
 class Event {
 public:
     void randomize(std::vector<Stock> &stocks, double percent, double variation);
-    void randomizeGain(std::vector<Stock> &stocks);
-    void randomizeFall(std::vector<Stock> &stocks);
-    void randomizeBigGain(std::vector<Stock> &stocks);
-    void randomizeBigFall(std::vector<Stock> &stocks);
+    void changePriceBySector(const std::string& targetSector);
+
 private:
 };
 #endif //EVENTS_H

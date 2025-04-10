@@ -2,17 +2,18 @@
 #include "./headerFiles/stock.h"
 #include <chrono>
 #include "./headerFiles/cripto.h"
+#include "./headerFiles/events.h"
+#include "groqIa/groq.h"
+
 
 int main() {
-    while (true) {
-        for (auto& cripto : criptos) {
-            cripto.changePrice();
-            std::cout << "nome" << cripto.getName() << std::endl;
-            std::cout << "preço: " << cripto.getPrice() << std::endl;
-            std::cout << "share: " << cripto.getShare() << std::endl;
-            std::cout << "demand:" << cripto.getDemand() << std::endl;
-        }
-    }
+    Groq groq;
+    std::string godNotice = groq.sendGodNotice("tecnologia");
+    std::cout << "Resposta otimista: " << godNotice << std::endl;
 
+    std::string badNotice = groq.sendBadNotice("energia");
+    std::cout << "Resposta pessimista: " << badNotice << std::endl;
 
+    return 0;
 }
+
