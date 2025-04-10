@@ -1,4 +1,5 @@
 #include "../headerFiles/stock.h"
+#include "../headerFiles/cripto.h"
 
 #ifndef EVENTS_H
 #define EVENTS_H

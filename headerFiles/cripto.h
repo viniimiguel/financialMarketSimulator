@@ -7,24 +7,26 @@
 class Cripto {
 private:
     std::string name;
-    long long price;
+    double price;
     long long share;
     long long demand;
 public:
-    Cripto(const std::string &name, long long price, long long share, long long demand)
+    Cripto(const std::string &name, double price, long long share, long long demand)
         : name(name),
           price(price),
           share(share),
           demand(demand) {
     }
     void setName(std::string name);
-    void setPrice(long long price);
+    void setPrice(double price);
     void setShare(long long share);
     void setDemand(long long demand);
     std::string getName();
-    long long getPrice();
+    double getPrice();
     long long getShare();
     long long getDemand();
+    void sendCriptoJson();
+    void changePrice();
 };
 extern std::vector<Cripto> criptos;
 #endif

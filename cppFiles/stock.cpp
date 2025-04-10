@@ -5,6 +5,7 @@
 #include <ctime>
 #include <random>
 
+
 void Stock::setTicker(std::string ticker) {
     this->ticker = ticker;
 }
