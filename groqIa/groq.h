@@ -7,7 +7,7 @@ private:
 public:
     std::string sendBadNotice(const std::string& sector);
     std::string sendGodNotice(const std::string& sector);
-    void sendJsonNotice();
+    void sendJsonNotice(const std::string& notice);
 
 };
 #endif

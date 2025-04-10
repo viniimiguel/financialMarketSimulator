@@ -7,12 +7,9 @@
 
 
 int main() {
-    Groq groq;
-    std::string godNotice = groq.sendGodNotice("tecnologia");
-    std::cout << "Resposta otimista: " << godNotice << std::endl;
+    Event event;
 
-    std::string badNotice = groq.sendBadNotice("energia");
-    std::cout << "Resposta pessimista: " << badNotice << std::endl;
+    event.changeBadPriceBySector("Financial");
 
     return 0;
 }

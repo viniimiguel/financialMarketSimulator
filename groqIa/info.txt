@@ -1,0 +1,5 @@
+aqui crie um arquivo chamado "api.cpp"
+
+#include <string>
+
+std::string api = "your_api_key";

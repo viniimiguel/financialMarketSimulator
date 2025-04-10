@@ -70,3 +70,39 @@ std::string Groq::sendBadNotice(const std::string& sector) {
     const std::string prompt = "Crie uma mensagem que destaque desafios, problemas ou tendências negativas relacionados a um setor específico. A mensagem deve abordar os fatores de risco ou preocupações que possam impactar o desempenho do setor como um todo, sem mencionar empresas específicas. O tom deve ser profissional e informativo, visando alertar sobre possíveis impactos no mercado financeiro.";
     return sendRequest(sector, prompt);
 }
+
+void Groq::sendJsonNotice(const std::string& notice) {
+    CURL *curl;
+    CURLcode res;
+    std::string json_data = "{"
+        "\"ticker\": \"" + notice+ "\", "
+    "}";
+
+    curl = curl_easy_init();
+
+    if (curl) {
+        curl_easy_setopt(curl, CURLOPT_URL, "http://localhost:8080/api/simulator/groqNotice");
+
+
+        curl_easy_setopt(curl, CURLOPT_POST, 1L);
+
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
+
+        struct curl_slist *headers = nullptr;
+        headers = curl_slist_append(headers, "Content-Type: application/json");
+        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
+
+        res = curl_easy_perform(curl);
+
+        if (res != CURLE_OK) {
+            std::cerr << "curl_easy_perform() failed: " << curl_easy_strerror(res) << std::endl;
+        } else {
+            std::cout << "JSON enviado com sucesso!" << std::endl;
+        }
+
+        curl_slist_free_all(headers);
+        curl_easy_cleanup(curl);
+    } else {
+        std::cerr << "Falha ao inicializar CURL." << std::endl;
+    }
+}

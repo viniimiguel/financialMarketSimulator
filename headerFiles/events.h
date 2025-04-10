@@ -7,6 +7,7 @@ class Event {
 public:
     void randomize(std::vector<Stock> &stocks, double percent, double variation);
     void changePriceBySector(const std::string& targetSector);
+    void changeBadPriceBySector(const std::string& targetSector);
 
 private:
 };
