@@ -99,7 +99,7 @@ mkdir cmake-build-debug
 cd cmake-build-debug
 cmake ..
 make
-g++ main.cpp cppFiles/*.cpp -IheaderFiles -o main -lcurl
+g++ main.cpp cppFiles/*.cpp groqIa/groq.cpp groqIa/api.cpp -IheaderFiles -o main -lcurl
 ./main.cpp
 ```
 4° Front-end:
