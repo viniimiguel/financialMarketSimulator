@@ -101,7 +101,7 @@ void Groq::sendJsonNotice(const std::string& notice) {
     curl = curl_easy_init();
 
     if (curl) {
-        curl_easy_setopt(curl, CURLOPT_URL, "http://localhost:8080/api/simulator/groqNotice");
+        curl_easy_setopt(curl, CURLOPT_URL, "http://localhost:8080/api/groq/notice");
         curl_easy_setopt(curl, CURLOPT_POST, 1L);
         curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
 
