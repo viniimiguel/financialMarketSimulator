@@ -132,6 +132,7 @@ void Groq::processAndSendNotice(const std::string& sector, bool isPositive) {
         std::cout << notice << std::endl;
     } else {
         notice = sendBadNotice(sector);
+        std::cout << notice << std::endl;
     }
     if (!notice.empty()) {
         sendJsonNotice(notice);
