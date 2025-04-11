@@ -66,13 +66,14 @@ void Stock::sendStockJson() {
     CURL *curl;
     CURLcode res;
     std::string json_data = "{"
-        "\"ticker\": \"" + getTicker() + "\", "
-        "\"companyName\": \"" + getCompanyName() + "\", "
-        "\"price\": " + std::to_string(getFormatedPrice()) + ", "
-        "\"country\": " + getCountry() + ", "
-        "\"sector\": " + getSector() + ", "
-        "\"variation\": " + std::to_string(getVariation()) +
-    "}";
+    "\"ticker\": \"" + getTicker() + "\", "
+    "\"companyName\": \"" + getCompanyName() + "\", "
+    "\"price\": " + std::to_string(getFormatedPrice()) + ", "
+    "\"variation\": " + std::to_string(getVariation()) + ", "
+    "\"country\": \"" + getCountry() + "\", "
+    "\"sector\": \"" + getSector() + "\""
+"}";
+
 
     curl = curl_easy_init();
 
@@ -95,7 +96,7 @@ void Stock::sendStockJson() {
         } else {
             std::cout << "JSON enviado com sucesso!" << std::endl;
         }
-
+    
         curl_slist_free_all(headers);
         curl_easy_cleanup(curl);
     } else {
