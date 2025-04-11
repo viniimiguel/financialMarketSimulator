@@ -1,8 +1,8 @@
 #include "../headerFiles/events.h"
 #include <iostream>
 #include <cstdlib>
-#include <ctime>
 #include <random>
+#include "../groqIa/groq.h"
 
 void Event::randomize(std::vector<Stock> &stocks, double percent, double variation) {
     if (stocks.empty()) return;
@@ -36,7 +36,9 @@ void Event::changePriceBySector(const std::string& targetSector) {
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_real_distribution<> dis(10.0, 100.0);
-
+    Groq groq;
+    groq.processAndSendNotice(targetSector, true);
+    //agora aqui por um tempo de espera que eu ainda vou definir antes de setar o valor ou por o valor das ações subindo de pouquinho sei la vou ver ainda mesma coisa q falei la em baixo
     for (auto& stock : stocks) {
         if (stock.getSector() == targetSector) {
             double percentageChange = dis(gen);
@@ -67,7 +69,9 @@ void Event::changeBadPriceBySector(const std::string& targetSector) {
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_real_distribution<> dis(-10.0, -99.0);
-
+    Groq groq;
+    groq.processAndSendNotice(targetSector, false);
+    //agora aqui por um tempo de espera que eu ainda vou definir antes de setar o valor ou por o valor das ações desecendo de pouquinho sei la vou ver ainda
     for (auto& stock : stocks) {
         if (stock.getSector() == targetSector) {
             double percentageChange = dis(gen);
