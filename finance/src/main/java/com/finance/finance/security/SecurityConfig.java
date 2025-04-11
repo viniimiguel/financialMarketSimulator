@@ -48,7 +48,9 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/simulator/stock/{ticket}").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/orders/buy").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/orders/sell").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers(HttpMethod.POST, "/api/groq/notice").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/groq/get/notices").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/groq/get/notice").permitAll()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
