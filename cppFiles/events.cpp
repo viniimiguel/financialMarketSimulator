@@ -18,8 +18,8 @@ void Event::randomize(std::vector<Stock> &stocks, double percent, double variati
 
     std::cout << "antes a empresa: " << stocks[index].getCompanyName() << " valia: " << currentPrice << std::endl;
 
-    double newPriceDouble = static_cast<double>(currentPrice) * percent;
-    long long newPrice = static_cast<long long>(newPriceDouble);
+    long long  newPrice = (currentPrice) * percent;
+
 
     if (newPrice <= 0) {
         newPrice = 1;
@@ -82,8 +82,7 @@ void Event::changeBadPriceBySector(const std::string& targetSector) {
                           << ": " << currentPrice << "\n";
                 continue;
             }
-            double newPriceDouble = static_cast<double>(currentPrice) * (1.0 + percentageChange / 100.0);
-            long long newPrice = static_cast<long long>(newPriceDouble);
+            long long newPrice = (currentPrice) * (1.0 + percentageChange / 100.0);
 
             if (newPrice <= 0) {
                 newPrice = 1;

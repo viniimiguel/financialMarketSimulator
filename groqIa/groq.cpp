@@ -92,11 +92,19 @@ std::string Groq::sendBadNotice(const std::string& sector) {
 }
 
 void Groq::sendJsonNotice(const std::string& notice) {
+    if (notice.empty()) {
+        std::cerr << "Erro: a mensagem para o campo 'notice' está vazia!" << std::endl;
+        return;
+    }
+
     CURL *curl;
     CURLcode res;
+
     std::string json_data = "{"
-        "\"ticker\": \"" + notice+ "\", "
+        "\"notice\": \"" + notice + "\""
     "}";
+
+    std::cout << "JSON a ser enviado: " << json_data << std::endl;
 
     curl = curl_easy_init();
 
@@ -122,7 +130,6 @@ void Groq::sendJsonNotice(const std::string& notice) {
     } else {
         std::cerr << "Falha ao inicializar CURL." << std::endl;
     }
-
 }
 void Groq::processAndSendNotice(const std::string& sector, bool isPositive) {
     std::string notice;

@@ -37,7 +37,7 @@ int main() {
         auto now = std::chrono::steady_clock::now();
         auto elapsed = std::chrono::duration_cast<std::chrono::minutes>(now - last_change).count();
 
-        if (elapsed >= 50) {
+        if (elapsed < 1) {
             std::random_device rd;
             std::mt19937 gen(rd());
             std::uniform_int_distribution<> dis(0, sectors.size() - 1);
@@ -53,9 +53,26 @@ int main() {
 
             isNegativeChange = !isNegativeChange;
             last_change = now;
+
+        }
+        for (auto& stock : stocks) {
+            auto money = u1.convertCentsToUnit(stock.getPrice());
+            stock.setFormatedPrice(money);
+            stock.changePrice();
+            std::cout << "Updated Ticker: " << stock.getTicker() << "\n";
+            std::cout << "Updated Company: " << stock.getCompanyName() << "\n";
+            std::cout << "Price: $" << std::fixed << std::setprecision(2) << money << "\n";
+            std::cout << "variation: " << stock.getVariation() << "%" << "\n";
+            std::cout << "-----------------------------\n";
+            std::cout << "numero de iteracoes: " << count << std::endl;
+            count++;
         }
 
-    }
 
+        for (auto& stock : stocks) {
+            stock.sendStockJson();
+        }
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
     return 0;
 }
