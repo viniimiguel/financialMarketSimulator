@@ -41,17 +41,17 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody RegisterRequestDto body) {
         Optional<User> user = this.userRepository.findByEmail(body.email());
-        if(user.isEmpty()){
+        if (user.isEmpty()) {
             User newUser = new User();
             newUser.setPassword(passwordEncoder.encode(body.password()));
             newUser.setEmail(body.email());
             newUser.setName(body.name());
+            newUser.setRole(body.role());
             this.userRepository.save(newUser);
+
             String token = tokenService.generateToken(newUser);
             return ResponseEntity.ok(new ResponseDto(newUser.getName(), token));
-
         }
-
 
         return ResponseEntity.badRequest().build();
     }
