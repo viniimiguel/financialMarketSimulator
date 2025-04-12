@@ -77,7 +77,8 @@
               "buildTarget": "financeFront:build:production"
             },
             "development": {
-              "buildTarget": "financeFront:build:development"
+              "buildTarget": "financeFront:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
