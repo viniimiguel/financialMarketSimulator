@@ -3,9 +3,9 @@ package com.finance.finance.service;
 import com.finance.finance.dto.StockSimulatorDto;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class SimulatorService {
@@ -33,5 +33,10 @@ public class SimulatorService {
         return stockData.values();
     }
 
+    public List<StockSimulatorDto> getRandomStocks(int count) {
+        List<StockSimulatorDto> stocks = new ArrayList<>(stockData.values());
+        Collections.shuffle(stocks);
+        return stocks.stream().limit(count).collect(Collectors.toList());
+    }
 
 }

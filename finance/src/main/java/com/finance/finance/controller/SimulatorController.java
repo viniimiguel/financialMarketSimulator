@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.List;
 
 
 @RestController
@@ -41,4 +42,9 @@ public class SimulatorController {
         Collection<StockSimulatorDto> allStocks = simulatorService.getAllStocks();
         return ResponseEntity.ok(allStocks);
     }
+    @GetMapping("/stock/random")
+    public ResponseEntity<List<StockSimulatorDto>> getRandomStocks(@RequestParam(defaultValue = "4") int count) {
+        List<StockSimulatorDto> randomStocks = simulatorService.getRandomStocks(count);
+        return ResponseEntity.ok(randomStocks);
     }
+}

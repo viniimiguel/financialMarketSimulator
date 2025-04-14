@@ -39,6 +39,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/groq/notice").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/groq/get/notices").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/groq/get/notice").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/simulator/stock/random").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/auth/user/{id}").permitAll()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
 

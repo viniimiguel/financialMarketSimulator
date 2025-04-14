@@ -9,10 +9,10 @@
       <div class="box box-1">
         <div class="miniNav">
           <div class="tabs">
-            <span class="tab active">Mais populares</span>
-            <span class="tab">Mais recentes</span>
+            <span class="tab active">Ações</span>
+            <span class="tab">Criptos</span>
           </div>
-          <a href="#" class="view-all">Veja + de 750 ações</a>
+          <a href="#" class="view-all">Veja + de 1000 ações</a>
         </div>
 
         <div class="homeStocks" *ngIf="displayedStocks && displayedStocks.length">
@@ -29,14 +29,8 @@
       </div>
 
       <div class="box box-2">
-        <h2>Relatórios</h2>
-        <p>
-          At vero eos et accusamus et iusto odio dignissimos ducimus 
-          qui blanditiis praesentium voluptatum deleniti atque corrupti 
-          quos dolores et quas molestias excepturi sint occaecati cupiditate 
-          non provident, similique sunt in culpa qui officia deserunt mollitia 
-          animi, id est laborum et dolorum fuga..
-        </p>
+        <h2>{{ notice?.title || 'Notícia' }}</h2>
+        <p>{{ notice?.content || 'Carregando notícia...' }}</p>
       </div>
     </div>
   </div>

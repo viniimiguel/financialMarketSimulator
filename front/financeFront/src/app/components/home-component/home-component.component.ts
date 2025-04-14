@@ -8,6 +8,11 @@ interface Stock {
   variation: number;
 }
 
+interface Notice {
+  title: string;
+  content: string;
+}
+
 @Component({
   selector: 'app-home-component',
   standalone: false,
@@ -17,14 +22,15 @@ interface Stock {
 export class HomeComponentComponent implements OnInit, OnDestroy {
   allStocks: Stock[] = [];
   displayedStocks: Stock[] = [];
+  notice: Notice | null = null;
   private stockIndex = 0;
 
   constructor(private router: Router, private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get<Stock[]>('http://localhost:8080/api/simulator/stock/all').subscribe({
+    this.http.get<Stock[]>('http://localhost:8080/api/simulator/stock/random').subscribe({
       next: (data: any[]) => {
-        console.log('Dados recebidos da API:', data); // debug
+        console.log('Dados recebidos da API:', data);
         if (!Array.isArray(data)) {
           console.error('Resposta da API não é um array');
           return;
@@ -48,11 +54,16 @@ export class HomeComponentComponent implements OnInit, OnDestroy {
         console.error('Erro ao buscar ações da API:', err);
       }
     });
+
+    this.http.get('http://localhost:8080/api/groq/get/notice', { responseType: 'text' }).subscribe({
+      next: (data) => {
+        this.notice = { title: 'Notícia', content: data }; 
+      },
+      error: (err) => console.error('Erro ao buscar notícia da API:', err)
+    });
   }
 
-  ngOnDestroy(): void {
-
-  }
+  ngOnDestroy(): void {}
 
   updateDisplayedStocks(): void {
     const total = this.allStocks.length;
@@ -80,8 +91,7 @@ export class HomeComponentComponent implements OnInit, OnDestroy {
     if (variation === undefined || variation === null) {
       return '';
     }
-    const percentage = variation;
-    const formatted = percentage.toFixed(2);
+    const formatted = variation.toFixed(2);
     return `${variation >= 0 ? '+' : ''}${formatted}%`;
   }
 
