@@ -56,7 +56,7 @@ double Stock::getVariation() {
 void Stock::changePrice() {
     static std::random_device rd;
     static std::mt19937 gen(rd());
-    std::uniform_real_distribution<double> dist(-0.005, 0.005);
+    std::uniform_real_distribution<double> dist(-0.05, 0.05);
     double variable = dist(gen);
     price = static_cast<long long>(price * (1.0 + variable) + 0.5);
     std::cout << "Variação: " << variable * 100 << "% | Novo Preço: " << price << std::endl;
