@@ -1,51 +1,43 @@
 <div class="home-wrapper">
-    <div class="top-section">
-      <div class="info-left">
-        <h1>Uma Abordagem Educativa e Segura para sua Primeira Experiência com Ações e Criptomoedas</h1>
-        <button (click)="goToRegister()" class="btn-start-now">Comece Agora</button>
+  <div class="top-section">
+    <div class="info-left">
+      <h1>Uma Abordagem Educativa e Segura para sua Primeira Experiência com Ações e Criptomoedas</h1>
+      <button (click)="goToRegister()" class="btn-start-now">Comece Agora</button>
+    </div>
+
+    <div class="right-boxes">
+      <div class="box box-1">
+        <div class="miniNav">
+          <div class="tabs">
+            <span class="tab active">Mais populares</span>
+            <span class="tab">Mais recentes</span>
+          </div>
+          <a href="#" class="view-all">Veja + de 750 ações</a>
+        </div>
+
+        <div class="homeStocks" *ngIf="displayedStocks && displayedStocks.length">
+          <ul>
+            <li class="stock-item" *ngFor="let stock of displayedStocks">
+              <span class="stock-symbol">{{ stock?.ticker }}</span>
+              <span class="stock-price">${{ stock?.price?.toFixed(2) }}</span>
+              <span class="stock-change" [class]="getVariationClass(stock?.variation)">
+                {{ getFormattedVariation(stock?.variation) }}
+              </span>
+            </li>
+          </ul>
+        </div>
       </div>
-  
-      <div class="right-boxes">
-        <div class="box box-1">
-          <div class="miniNav">
-            <div class="tabs">
-              <span class="tab active">Mais populares</span>
-              <span class="tab">Mais recentes</span>
-            </div>
-            <a href="#" class="view-all">Veja + de 750 ações</a>
-          </div> 
-  
-          <div class="homeStocks">
-            <ul>
-              <li class="stock-item">
-                <span class="stock-symbol">AAPL</span>
-                <span class="stock-price">$150.30</span>
-                <span class="stock-change negative">-1.32%</span>
-              </li>
-              <li class="stock-item">
-                <span class="stock-symbol">MSFT</span>
-                <span class="stock-price">$298.20</span>
-                <span class="stock-change positive">+0.87%</span>
-              </li>
-              <li class="stock-item">
-                <span class="stock-symbol">PETROSEN</span>
-                <span class="stock-price">$1176.5</span>
-                <span class="stock-change negative">-0.27%</span>
-              </li>
-              <li class="stock-item">
-                <span class="stock-symbol">SEMC</span>
-                <span class="stock-price">$525.63</span>
-                <span class="stock-change negative">-0.19%</span>
-              </li>
-            </ul>
-          </div> 
-        </div> 
-  
-        <div class="box box-2">
-          <h2>Relatórios</h2>
-          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga..</p>
-        </div> 
+
+      <div class="box box-2">
+        <h2>Relatórios</h2>
+        <p>
+          At vero eos et accusamus et iusto odio dignissimos ducimus 
+          qui blanditiis praesentium voluptatum deleniti atque corrupti 
+          quos dolores et quas molestias excepturi sint occaecati cupiditate 
+          non provident, similique sunt in culpa qui officia deserunt mollitia 
+          animi, id est laborum et dolorum fuga..
+        </p>
       </div>
     </div>
   </div>
-  
+</div>

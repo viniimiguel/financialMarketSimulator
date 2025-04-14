@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login-component',
@@ -27,6 +26,7 @@ export class LoginComponentComponent {
       .subscribe(
         (response: any) => {
           console.log('Resposta do servidor:', response);
+          localStorage.setItem('authToken', response.token);
           this.router.navigate(['/user-painel']);
         },
         (error) => {
@@ -35,5 +35,4 @@ export class LoginComponentComponent {
         }
       );
   }
-  
 }

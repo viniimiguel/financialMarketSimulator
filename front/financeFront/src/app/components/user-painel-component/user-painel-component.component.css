@@ -111,7 +111,6 @@
 .balance {
     position: relative;
     margin-left: 250px;
-    margin-top: 36px;
     color: #EDEDED;
     border: 1px solid #3E4451;
     border-radius: 12px;
@@ -119,6 +118,40 @@
     width: 800px;
     background-color: #2C313C;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.infos{
+    position: relative;
+    margin-left: 250px;
+    color: #EDEDED; 
+    border-radius: 12px;
+    padding: 20px 30px;
+    width: 800px;
+    font-size: 24px;
+    margin-bottom: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-bottom: 2px solid #7F5AF0;
+    display: inline-block;
+    padding-bottom: 4px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    
+}
+.infos button{
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+    background-color: #2BB673;
+    color: #FFFFFF;
+}
+.infos button:hover{
+    background-color: #249a60;
 }
 .balance h2 {
     color: #B0BEC5;

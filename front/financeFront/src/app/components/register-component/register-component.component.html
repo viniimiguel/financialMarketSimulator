@@ -1,22 +1,70 @@
 <div class="registerContainer">
     <div class="register">
-      <form (ngSubmit)="register()">
+      <form #registerForm="ngForm" (ngSubmit)="register()" novalidate>
         <h2>Cadastrar-se</h2>
-        
-        <label for="name">Nome:</label>
-        <input placeholder="Nome" type="text" id="name" [(ngModel)]="name" name="name" required />
-        
-        <label for="email">Email:</label>
-        <input placeholder="Email" type="email" id="email" [(ngModel)]="email" name="email" required />
-        
-        <label for="password">Senha:</label>
-        <input placeholder="Senha" type="password" id="password" [(ngModel)]="password" name="password" required />
-        
-        <label for="confPassword">Confirmação de senha:</label>
-        <input placeholder="Confirmação de senha" type="password" id="confPassword" [(ngModel)]="confPassword" name="confPassword" required />
-        
+  
+        <div>
+          <label for="name">Nome:</label>
+          <input
+            placeholder="Nome"
+            type="text"
+            id="name"
+            [(ngModel)]="name"
+            name="name"
+            required
+          />
+          <div *ngIf="registerForm.submitted && !name" class="error">
+            O campo Nome é obrigatório.
+          </div>
+        </div>
+  
+        <div>
+          <label for="email">Email:</label>
+          <input
+            placeholder="Email"
+            type="email"
+            id="email"
+            [(ngModel)]="email"
+            name="email"
+            required
+          />
+          <div *ngIf="registerForm.submitted && !email" class="error">
+            O campo Email é obrigatório.
+          </div>
+        </div>
+  
+        <div>
+          <label for="password">Senha:</label>
+          <input
+            placeholder="Senha"
+            type="password"
+            id="password"
+            [(ngModel)]="password"
+            name="password"
+            required
+          />
+          <div *ngIf="registerForm.submitted && !password" class="error">
+            O campo Senha é obrigatório.
+          </div>
+        </div>
+  
+        <div>
+          <label for="confPassword">Confirmação de Senha:</label>
+          <input
+            placeholder="Confirmação de Senha"
+            type="password"
+            id="confPassword"
+            [(ngModel)]="confPassword"
+            name="confPassword"
+            required
+          />
+          <div *ngIf="registerForm.submitted && (!confPassword || password !== confPassword)" class="error">
+            As senhas devem coincidir.
+          </div>
+        </div>
+  
         <p><a [routerLink]="'/login'">Já possui cadastro?</a></p>
-        <button type="submit">Cadastrar</button>
+        <button type="submit" [disabled]="!registerForm.valid">Cadastrar</button>
       </form>
     </div>
   </div>

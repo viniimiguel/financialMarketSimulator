@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'; // Importar FormsModule para usar ngModel
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { provideHttpClient, withFetch } from '@angular/common/http'; // Modificação aqui
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,7 +40,7 @@ import { BuyAndSellCriptoComponentComponent } from './components/buy-and-sell-cr
     FormsModule,
   ],
   providers: [
-    provideHttpClient(withInterceptorsFromDi())
+    provideHttpClient(withFetch()) 
   ],
   bootstrap: [AppComponent]
 })
