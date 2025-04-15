@@ -4,8 +4,16 @@
     <button class="btn-receive" (click)="addBalance(50)">Receber 50$</button>
   </div>
   <div class="balance">
-    <h2>Saldo estimado: <span class="balance-estimated">{{ getEstimatedBalance() | currency: 'USD':'symbol':'1.2-2' }}</span></h2>
-    <h2>Saldo atual: <span class="balance-current">{{ currentBalance | currency: 'USD':'symbol':'1.2-2' }}</span></h2>
+    <h2>Saldo estimado: 
+      <span class="balance-estimated">
+        {{ estimatedBalance | currency: 'USD':'symbol':'1.2-2' }}
+      </span>
+    </h2>
+    <h2>Saldo atual: 
+      <span class="balance-current">
+        {{ currentBalance | currency: 'USD':'symbol':'1.2-2' }}
+      </span>
+    </h2>
   </div>
   <div class="userWallet">
     <h2>Seus Ativos</h2>
@@ -27,7 +35,7 @@
         <span class="stock-price">{{ stock.price | currency: 'USD':'symbol':'1.2-2' }}</span>
         <span 
           class="stock-change" 
-          [ngClass]="getVariationClass(stock.variation)">
+          [ngClass]="getVariationClass(stock.va riation)">
           {{ getFormattedVariation(stock.variation) }}
         </span>
       </div>

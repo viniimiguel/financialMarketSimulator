@@ -23,18 +23,19 @@ export class UserPainelComponentComponent implements OnInit, OnDestroy {
   userName: string = '';
   userId: string = '';
   allStocks: Stock[] = [];
-  myWallet: { ticker: string; quantity: number }[] = []; 
-  currentBalance: number = 150.63;
-  estimatedBalance: number = 2150.63; 
-  showingStocks: boolean = true; 
-  notice: Notice | null = null; // Adicionado para armazenar a notícia
+  myWallet: { ticker: string; quantity: number }[] = [];
+  currentBalance: number = 0; 
+  estimatedBalance: number = 0; 
+  showingStocks: boolean = true;
+  notice: Notice | null = null;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.setUserDetails();
     this.fetchUserId();
-    this.fetchNotice(); // Chama o método para buscar a notícia
+    this.fetchNotice();
+    this.fetchWalletBalance();
   }
 
   ngOnDestroy(): void {}
@@ -97,7 +98,7 @@ export class UserPainelComponentComponent implements OnInit, OnDestroy {
           })
           .filter(stock => stock !== null) as Stock[];
 
-        console.log('Dados combinados das ações:', this.allStocks);
+        this.calculateEstimatedBalance();
       },
       error: (err) => {
         console.error('Erro ao buscar ações da API:', err);
@@ -105,10 +106,29 @@ export class UserPainelComponentComponent implements OnInit, OnDestroy {
     });
   }
 
+  fetchWalletBalance(): void {
+    this.http.get<{ id: number; balance: number }>('http://localhost:8080/wallet/get/1').subscribe({
+      next: (data) => {
+        this.currentBalance = data.balance;
+        console.log('Saldo atual carregado:', this.currentBalance);
+      },
+      error: (err) => {
+        console.error('Erro ao buscar saldo atual:', err);
+      }
+    });
+  }
+
+  calculateEstimatedBalance(): void {
+    this.estimatedBalance = this.allStocks.reduce((total, stock) => {
+      return total + (stock.price * (stock.quantity || 0));
+    }, 0);
+    console.log('Saldo estimado calculado:', this.estimatedBalance);
+  }
+
   fetchNotice(): void {
     this.http.get('http://localhost:8080/api/groq/get/notice', { responseType: 'text' }).subscribe({
       next: (data) => {
-        this.notice = { title: 'Notícia', content: data }; // Armazena a notícia na variável notice
+        this.notice = { title: 'Notícia', content: data };
       },
       error: (err) => {
         console.error('Erro ao buscar notícia da API:', err);
@@ -132,10 +152,6 @@ export class UserPainelComponentComponent implements OnInit, OnDestroy {
   addBalance(amount: number): void {
     this.currentBalance += amount;
     console.log(`Saldo atual atualizado: ${this.currentBalance}`);
-  }
-
-  getEstimatedBalance(): number {
-    return this.estimatedBalance;
   }
 
   showStocks(): void {
