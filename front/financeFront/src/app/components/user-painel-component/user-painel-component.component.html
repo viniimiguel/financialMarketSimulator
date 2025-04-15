@@ -35,11 +35,12 @@
         <span class="stock-price">{{ stock.price | currency: 'USD':'symbol':'1.2-2' }}</span>
         <span 
           class="stock-change" 
-          [ngClass]="getVariationClass(stock.va riation)">
+          [ngClass]="getVariationClass(stock.variation)">
           {{ getFormattedVariation(stock.variation) }}
         </span>
       </div>
     </div>
+    
   </div>
   <div class="notice" *ngIf="notice">
     <h2>{{ notice.title }}</h2>
