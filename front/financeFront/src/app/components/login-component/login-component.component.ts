@@ -19,14 +19,15 @@ export class LoginComponentComponent {
       email: this.email,
       password: this.password
     };
-  
+
     console.log('Enviando dados de login:', loginData);
-  
+
     this.http.post('http://localhost:8080/auth/login', loginData)
       .subscribe(
         (response: any) => {
           console.log('Resposta do servidor:', response);
           localStorage.setItem('authToken', response.token);
+          localStorage.setItem('userName', response.name);
           this.router.navigate(['/user-painel']);
         },
         (error) => {
