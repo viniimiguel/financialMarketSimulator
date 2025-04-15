@@ -21,21 +21,40 @@ export class RegisterComponentComponent {
       alert('As senhas não coincidem!');
       return;
     }
-
+  
     const registerData = {
       name: this.name,
       email: this.email,
       password: this.password,
       role: 'ROLE_USER'
     };
-
+  
     console.log('Enviando dados de registro:', registerData);
-
+  
     this.http.post('http://localhost:8080/auth/register', registerData)
       .subscribe(
         (response: any) => {
           console.log('Usuário registrado com sucesso:', response);
-          this.router.navigate(['/login']);
+  
+          const walletData = {
+            balance: 2000,
+            user: { id: response.id }
+          };
+  
+          const headers = { Authorization: `Bearer ${response.token}` };
+  
+          this.http.post('http://localhost:8080/wallet/create', walletData, { headers })
+            .subscribe(
+              (walletResponse: any) => {
+                console.log('Carteira criada com sucesso:', walletResponse);
+                alert('Usuário e carteira criados com sucesso!');
+                this.router.navigate(['/login']);
+              },
+              (walletError) => {
+                console.error('Erro ao criar a carteira:', walletError);
+                alert('Erro ao criar a carteira: ' + (walletError.error?.message || 'Erro de permissão ou configuração.'));
+              }
+            );
         },
         (error) => {
           console.error('Erro no registro:', error);
@@ -43,4 +62,6 @@ export class RegisterComponentComponent {
         }
       );
   }
+  
+  
 }

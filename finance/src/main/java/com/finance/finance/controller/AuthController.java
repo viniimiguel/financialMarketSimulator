@@ -2,6 +2,7 @@ package com.finance.finance.controller;
 
 import com.finance.finance.dto.LoginRequestDto;
 import com.finance.finance.dto.RegisterRequestDto;
+import com.finance.finance.dto.RegisterResponseDto;
 import com.finance.finance.dto.ResponseDto;
 import com.finance.finance.entity.User;
 import com.finance.finance.repository.UserRepository;
@@ -47,11 +48,12 @@ public class AuthController {
             this.userRepository.save(newUser);
 
             String token = tokenService.generateToken(newUser);
-            return ResponseEntity.ok(new ResponseDto(newUser.getName(), token));
+            return ResponseEntity.ok(new RegisterResponseDto(newUser.getId(), newUser.getName(), token));
         }
 
         return ResponseEntity.badRequest().build();
     }
+
     @GetMapping("/user/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Integer id) {
         return userRepository.findById(id)
