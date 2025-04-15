@@ -1,4 +1,4 @@
-.myTransation {
+.transaction-container {
     position: relative;
     margin-left: 250px;
     margin-top: 36px;
@@ -8,7 +8,8 @@
     padding: 30px 40px;
     width: 800px;
 }
-.actually h2{
+
+.transaction-container h2 {
     font-size: 24px;
     margin-bottom: 16px;
     font-weight: 700;
@@ -16,49 +17,31 @@
     border-bottom: 2px solid #7F5AF0;
     display: inline-block;
     padding-bottom: 4px;
+    color: #FFFFFF;
 }
 
-.stock-symbol {
-    flex-basis: 15%; 
+.transaction-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.transaction-table th,
+.transaction-table td {
+    padding: 8px 12px;
     text-align: left;
-}
-
-.stock-price {
-    flex-basis: 15%;
-    text-align: right;
-}
-
-.quantity {
-    flex-basis: 15%;
-    text-align: right;
-}
-
-.date {
-    flex-basis: 35%;
-    text-align: center;
-}
-
-.type {
-    flex-basis: 20%;
-    text-align: right;
-}
-.stock-container {
-    display: flex;
-    flex-direction: column;
-    margin-top: 16px;
-}
-.stock-header, .stock-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    font-size: 14px;
     border-bottom: 1px solid #3E4451;
+    font-size: 14px;
+    color: #C1C1C1;
 }
-.stock-header {
+
+.transaction-table th {
     font-weight: bold;
     font-size: 16px;
     color: #7F5AF0;
+    text-transform: uppercase;
 }
-.stock-item {
-    color: #C1C1C1;
+
+.transaction-table tbody tr:hover {
+    background-color: #2C2C3E;
+    transition: background-color 0.3s;
 }

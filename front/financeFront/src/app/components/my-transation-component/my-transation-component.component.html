@@ -1,42 +1,23 @@
-<div class="myTransation">
-    <div class="actually">
-        <h2>Transações</h2>
-        <div class="stock-container">
-            <div class="stock-header">
-                <span class="stock-symbol">Ticket</span>
-                <span class="stock-price">Preço</span>
-                <span class="quantity">Qnt</span>
-                <span class="date">Data</span>
-                <span class="type">Tipo</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-symbol">NSA</span>
-                <span class="stock-price">$150.30</span>
-                <span class="quantity">10</span>
-                <span class="date">2025-04-06 21:24:50</span>
-                <span class="type">SELL</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-symbol">AAPL</span>
-                <span class="stock-price">$167.20</span>
-                <span class="quantity">5</span>
-                <span class="date">2025-04-06 21:24:50</span>
-                <span class="type">BUY</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-symbol">ASSA3</span>
-                <span class="stock-price">$250.30</span>
-                <span class="quantity">3</span>
-                <span class="date">2025-04-06 21:24:50</span>
-                <span class="type">SELL</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-symbol">TSLA</span>
-                <span class="stock-price">$150.30</span>
-                <span class="quantity">8</span>
-                <span class="date">2025-04-06 21:24:50</span>
-                <span class="type">BUY</span>
-            </div>
-        </div>
-    </div>
+<div class="transaction-container">
+    <h2>Minhas Transações</h2>
+    <table class="transaction-table">
+        <thead>
+            <tr>
+                <th>Ticker</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+                <th>Data</th>
+                <th>Tipo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let transaction of transactions">
+                <td>{{ transaction.ticker }}</td>
+                <td>{{ transaction.price | currency:'BRL' }}</td>
+                <td>{{ transaction.quantity }}</td>
+                <td>{{ transaction.date }}</td>
+                <td>{{ transaction.type }}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

@@ -35,6 +35,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/simulator/stock/{ticket}").permitAll()
                         .requestMatchers(HttpMethod.POST, "/wallet/create").hasRole("USER")
                         .requestMatchers(HttpMethod.POST, "/api/orders/buy").hasRole("USER")
+                        .requestMatchers(HttpMethod.GET, "/api/orders/get/{userId}").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/orders/sell").hasRole("USER")
                         .requestMatchers(HttpMethod.POST, "/api/groq/notice").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/groq/get/notices").permitAll()

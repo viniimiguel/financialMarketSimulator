@@ -13,6 +13,8 @@ import com.finance.finance.repository.UserRepository;
 import com.finance.finance.repository.WalletRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class OrderService {
 
@@ -88,8 +90,6 @@ public class OrderService {
         if (walletStock.getQuantity() < dto.quantity()) {
             throw new RuntimeException("Not enough shares to sell");
         }
-
-        // Atualiza a quantidade
         int updatedQuantity = walletStock.getQuantity() - dto.quantity();
         if (updatedQuantity == 0) {
             myStocksRepository.delete(walletStock);
@@ -113,5 +113,11 @@ public class OrderService {
         walletRepository.save(wallet);
 
         return "Sell accomplished";
+    }
+    public List<OrderEntity> getOrdersByUserId(Integer userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User Not Found"));
+        WalletEntity wallet = user.getWallet();
+        return orderRepository.findByWallet(wallet);
     }
 }

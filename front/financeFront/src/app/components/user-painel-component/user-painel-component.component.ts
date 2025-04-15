@@ -8,6 +8,11 @@ interface Stock {
   quantity?: number;
 }
 
+interface Notice {
+  title: string;
+  content: string;
+}
+
 @Component({
   selector: 'app-user-painel',
   standalone: false,
@@ -22,12 +27,14 @@ export class UserPainelComponentComponent implements OnInit, OnDestroy {
   currentBalance: number = 150.63;
   estimatedBalance: number = 2150.63; 
   showingStocks: boolean = true; 
+  notice: Notice | null = null; // Adicionado para armazenar a notícia
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.setUserDetails();
     this.fetchUserId();
+    this.fetchNotice(); // Chama o método para buscar a notícia
   }
 
   ngOnDestroy(): void {}
@@ -98,6 +105,17 @@ export class UserPainelComponentComponent implements OnInit, OnDestroy {
     });
   }
 
+  fetchNotice(): void {
+    this.http.get('http://localhost:8080/api/groq/get/notice', { responseType: 'text' }).subscribe({
+      next: (data) => {
+        this.notice = { title: 'Notícia', content: data }; // Armazena a notícia na variável notice
+      },
+      error: (err) => {
+        console.error('Erro ao buscar notícia da API:', err);
+      }
+    });
+  }
+
   getFormattedVariation(variation: number | undefined): string {
     if (variation === undefined || variation === null) {
       return '';
@@ -119,10 +137,12 @@ export class UserPainelComponentComponent implements OnInit, OnDestroy {
   getEstimatedBalance(): number {
     return this.estimatedBalance;
   }
+
   showStocks(): void {
     this.showingStocks = true;
     console.log('Mostrando Ações');
   }
+
   showCryptos(): void {
     this.showingStocks = false;
     console.log('Mostrando Criptomoedas');
