@@ -1,62 +1,47 @@
 <div class="userPainel">
   <div class="infos">
     <h2>{{ userName }}</h2>
-    <button>Receber 50$</button>
+    <button class="btn-receive" (click)="addBalance(50)">Receber 50$</button>
   </div>
   <div class="balance">
-    <h2>Saldo estimado: 2150.63$</h2>
-    <h2>Saldo atual: 150.63$</h2>
+    <h2>Saldo estimado: <span class="balance-estimated">{{ getEstimatedBalance() | currency: 'USD':'symbol':'1.2-2' }}</span></h2>
+    <h2>Saldo atual: <span class="balance-current">{{ currentBalance | currency: 'USD':'symbol':'1.2-2' }}</span></h2>
   </div>
-    <div class="userWallet">
-      <h2>Seus Ativos</h2>
-      <div class="btns">
-          <button>Ações</button>
-          <button>Criptomoedas</button>
-      </div>
-      <div class="stock-container">
-          <div class="stock-header">
-              <span class="stock-symbol">Ticket</span>
-              <span class="quantity">Qnt</span>
-              <span class="stock-price">Preço</span>
-              <span class="stock-change">Variação</span>
-          </div>
-          <div class="stock-item">
-              <span class="stock-symbol">AAPL</span>
-              <span class="quantity">3</span>
-              <span class="stock-price">$150.30</span>
-              <span class="stock-change negative">-1.32%</span>
-          </div>
-          <div class="stock-item">
-              <span class="stock-symbol">MSFT</span>
-              <span class="quantity">1</span>
-              <span class="stock-price">$298.20</span>
-              <span class="stock-change positive">+0.87%</span>
-          </div>
-          <div class="stock-item">
-              <span class="stock-symbol">PETROSEN</span>
-              <span class="quantity">5</span>
-              <span class="stock-price">$1176.5</span>
-              <span class="stock-change negative">-0.27%</span>
-          </div>
-          <div class="stock-item">
-              <span class="stock-symbol">SEMC</span>
-              <span class="quantity">2</span>
-              <span class="stock-price">$525.63</span>
-              <span class="stock-change negative">-0.19%</span>
-          </div>
-          <div class="stock-item">
-            <span class="stock-symbol">TSLA</span>
-            <span class="quantity">4</span>
-            <span class="stock-price">$232.63</span>
-            <span class="stock-change positive">+0.19%</span>
-        </div>
-      </div>
-  </div>
+  <div class="userWallet">
+    <h2>Seus Ativos</h2>
+    <div class="btns">
+      <button class="btn-stock" (click)="showStocks()">Ações</button>
+      <button class="btn-crypto" (click)="showCryptos()">Criptomoedas</button>
+    </div>
 
-    <div class="notice">
-      <h2>Noticias</h2>
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-     
+    <div class="stock-container" *ngIf="showingStocks">
+      <div class="stock-header">
+        <span class="stock-symbol">Ticker</span>
+        <span class="quantity">Quantidade</span>
+        <span class="stock-price">Preço</span>
+        <span class="stock-change">Variação</span>
+      </div>
+      <div *ngFor="let stock of allStocks" class="stock-item">
+        <span class="stock-symbol">{{ stock.ticker }}</span>
+        <span class="quantity">{{ stock.quantity }}</span>
+        <span class="stock-price">{{ stock.price | currency: 'USD':'symbol':'1.2-2' }}</span>
+        <span 
+          class="stock-change" 
+          [ngClass]="getVariationClass(stock.variation)">
+          {{ getFormattedVariation(stock.variation) }}
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="notice">
+    <h2>Notícias</h2>
+    <p>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
+      standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to 
+      make a type specimen book. It has survived not only five centuries, but also the leap into electronic 
+      typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+      sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker 
+      including versions of Lorem Ipsum.
+    </p>
   </div>
 </div>
-

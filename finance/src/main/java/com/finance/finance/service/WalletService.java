@@ -30,4 +30,10 @@ public class WalletService {
         WalletEntity wallet = new WalletEntity(user, walletDto.balance());
         return walletRepository.save(wallet);
     }
+
+    public WalletEntity getWallet(Integer userId) {
+        return walletRepository.findByUserId(userId)
+                .orElseThrow(()-> new RuntimeException("Wallet not found for user id: "));
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.finance.finance.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore; // Certifique-se de importar a anotação correta
 import jakarta.persistence.*;
 
 @Entity
@@ -14,6 +15,7 @@ public class WalletEntity {
 
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false, unique = true)
+    @JsonIgnore 
     private User user;
 
     public WalletEntity() {}

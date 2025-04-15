@@ -22,18 +22,18 @@ export class LoginComponentComponent {
 
     console.log('Enviando dados de login:', loginData);
 
-    this.http.post('http://localhost:8080/auth/login', loginData)
-      .subscribe(
-        (response: any) => {
-          console.log('Resposta do servidor:', response);
-          localStorage.setItem('authToken', response.token);
-          localStorage.setItem('userName', response.name);
-          this.router.navigate(['/user-painel']);
-        },
-        (error) => {
-          console.error('Erro no login:', error);
-          alert('Erro ao tentar fazer login: ' + (error.error.message || 'Verifique suas credenciais'));
-        }
-      );
+    this.http.post('http://localhost:8080/auth/login', loginData).subscribe({
+      next: (response: any) => {
+        console.log('Resposta do servidor:', response);
+        localStorage.setItem('authToken', response.token);
+        localStorage.setItem('userName', response.name);
+        localStorage.setItem('userId', response.userId);
+        this.router.navigate(['/user-painel']);
+      },
+      error: (error) => {
+        console.error('Erro no login:', error);
+        alert('Erro ao tentar fazer login: ' + (error.error.message || 'Verifique suas credenciais'));
+      }
+    });
   }
 }

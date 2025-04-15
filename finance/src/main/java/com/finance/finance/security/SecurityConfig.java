@@ -41,6 +41,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/groq/get/notice").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/simulator/stock/random").permitAll()
                         .requestMatchers(HttpMethod.GET, "/auth/user/{id}").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/wallet/get/{id}").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/wallet/get/my-wallet/{id}").permitAll()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
 
