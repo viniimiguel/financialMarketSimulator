@@ -52,10 +52,10 @@ export class BuyAndSellStockComponentComponent implements OnInit {
 
     this.http.get<{ id: number; balance: number }>(`http://localhost:8080/wallet/get/${userId}`, { headers }).subscribe({
       next: (data) => {
-        this.currentBalance = data.balance;
+        this.currentBalance = Number(data.balance.toFixed(4));
       },
-      error: (err) => {
-        console.error('Erro ao buscar saldo do usuário:', err);
+      error: (error) => {
+        console.error('Erro ao obter saldo:', error);
       }
     });
   }
@@ -82,7 +82,7 @@ export class BuyAndSellStockComponentComponent implements OnInit {
     this.http.post('http://localhost:8080/api/orders/buy', payload, { headers }).subscribe({
       next: (response) => {
         console.log('Compra realizada com sucesso:', response);
-        this.fetchUserBalance(); // Atualizar saldo após compra.
+        this.fetchUserBalance();
       },
       error: (err) => {
         console.error('Erro ao comprar ação:', err);
@@ -103,7 +103,7 @@ export class BuyAndSellStockComponentComponent implements OnInit {
     this.http.post('http://localhost:8080/api/orders/sell', payload, { headers }).subscribe({
       next: (response) => {
         console.log('Venda realizada com sucesso:', response);
-        this.fetchUserBalance(); // Atualizar saldo após venda.
+        this.fetchUserBalance();
       },
       error: (err) => {
         console.error('Erro ao vender ação:', err);
