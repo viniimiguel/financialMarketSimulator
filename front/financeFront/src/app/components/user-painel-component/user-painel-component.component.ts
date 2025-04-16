@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 interface Stock {
@@ -24,21 +24,28 @@ export class UserPainelComponentComponent implements OnInit, OnDestroy {
   userId: string = '';
   allStocks: Stock[] = [];
   myWallet: { ticker: string; quantity: number }[] = [];
-  currentBalance: number = 0; 
-  estimatedBalance: number = 0; 
+  currentBalance: number = 0;
+  estimatedBalance: number = 0;
   showingStocks: boolean = true;
   notice: Notice | null = null;
 
-  constructor(private http: HttpClient) {}
+  private stockEventSource: EventSource | null = null;
+
+  constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.setUserDetails();
     this.fetchUserId();
     this.fetchNotice();
     this.fetchWalletBalance();
+    this.initSSEConnection();
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    if (this.stockEventSource) {
+      this.stockEventSource.close();
+    }
+  }
 
   setUserDetails(): void {
     const storedUserName = localStorage.getItem('userName');
@@ -67,7 +74,7 @@ export class UserPainelComponentComponent implements OnInit, OnDestroy {
       next: (data) => {
         console.log('Dados da carteira:', data);
         this.myWallet = data;
-        this.fetchStockData();
+        this.fetchStockData(); // Fetch inicial antes do SSE
       },
       error: (err) => {
         console.error('Erro ao buscar dados da carteira:', err);
@@ -104,6 +111,40 @@ export class UserPainelComponentComponent implements OnInit, OnDestroy {
         console.error('Erro ao buscar ações da API:', err);
       }
     });
+  }
+
+  initSSEConnection(): void {
+    this.stockEventSource = new EventSource('http://localhost:8080/api/simulator/stock/all');
+
+    this.stockEventSource.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+
+      if (!Array.isArray(data)) return;
+
+      this.allStocks = this.myWallet
+        .map(walletItem => {
+          const stockData = data.find(stock => stock.ticker === walletItem.ticker);
+          return stockData
+            ? {
+                ticker: stockData.ticker,
+                price: stockData.price,
+                variation: stockData.variation,
+                quantity: walletItem.quantity
+              }
+            : null;
+        })
+        .filter(stock => stock !== null) as Stock[];
+
+      this.calculateEstimatedBalance();
+      this.cdr.detectChanges();
+    };
+
+    this.stockEventSource.onerror = (error) => {
+      console.error('Erro no SSE:', error);
+      if (this.stockEventSource) {
+        this.stockEventSource.close();
+      }
+    };
   }
 
   fetchWalletBalance(): void {

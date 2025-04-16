@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 interface Stock {
@@ -12,7 +12,7 @@ interface Stock {
   templateUrl: './buy-and-sell-stock-component.component.html',
   styleUrls: ['./buy-and-sell-stock-component.component.css']
 })
-export class BuyAndSellStockComponentComponent implements OnInit {
+export class BuyAndSellStockComponentComponent implements OnInit, OnDestroy {
   stocks: Stock[] = [];
   selectedTicker: string = '';
   quantity: number = 1;
@@ -20,11 +20,20 @@ export class BuyAndSellStockComponentComponent implements OnInit {
   totalAmountToPay: number = 0;
   totalAmountToReceive: number = 0;
 
-  constructor(private http: HttpClient) {}
+  private stockEventSource: EventSource | null = null;
+
+  constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.fetchStocks();
+    this.fetchStocks(); 
     this.fetchUserBalance();
+    this.initSSEConnection(); 
+  }
+
+  ngOnDestroy(): void {
+    if (this.stockEventSource) {
+      this.stockEventSource.close();
+    }
   }
 
   private getAuthHeaders(): HttpHeaders {
@@ -44,6 +53,27 @@ export class BuyAndSellStockComponentComponent implements OnInit {
         console.error('Erro ao buscar ações:', err);
       }
     });
+  }
+
+  initSSEConnection(): void {
+    this.stockEventSource = new EventSource('http://localhost:8080/api/simulator/stock/all');
+
+    this.stockEventSource.onmessage = (event) => {
+      const data: Stock[] = JSON.parse(event.data);
+      if (!Array.isArray(data)) return;
+
+      this.stocks = data;
+      this.calculateTotalAmountToPay();
+      this.calculateTotalAmountToReceive();
+      this.cdr.detectChanges();
+    };
+
+    this.stockEventSource.onerror = (err) => {
+      console.error('Erro na conexão SSE:', err);
+      if (this.stockEventSource) {
+        this.stockEventSource.close();
+      }
+    };
   }
 
   fetchUserBalance(): void {

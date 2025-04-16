@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
@@ -24,18 +24,18 @@ export class HomeComponentComponent implements OnInit, OnDestroy {
   displayedStocks: Stock[] = [];
   notice: Notice | null = null;
   private stockIndex = 0;
+  private stockEventSource: EventSource | null = null;
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router, private http: HttpClient, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.http.get<Stock[]>('http://localhost:8080/api/simulator/stock/random').subscribe({
-      next: (data: any[]) => {
-        console.log('Dados recebidos da API:', data);
-        if (!Array.isArray(data)) {
-          console.error('Resposta da API não é um array');
-          return;
-        }
-
+    this.stockEventSource = new EventSource('http://localhost:8080/api/simulator/stock/random');
+    
+    this.stockEventSource.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      console.log('Dados recebidos do SSE:', data);
+      
+      if (Array.isArray(data)) {
         this.allStocks = data
           .filter(stock => stock?.ticker && stock?.price != null && stock?.variation != null)
           .map(stock => ({
@@ -49,12 +49,16 @@ export class HomeComponentComponent implements OnInit, OnDestroy {
         if (this.allStocks.length > 0) {
           this.updateDisplayedStocks();
         }
-      },
-      error: (err) => {
-        console.error('Erro ao buscar ações da API:', err);
       }
-    });
+      this.cdr.detectChanges();
+    };
 
+    this.stockEventSource.onerror = (error) => {
+      console.error('Erro no SSE:', error);
+      if (this.stockEventSource) {
+        this.stockEventSource.close();
+      }
+    };
     this.http.get('http://localhost:8080/api/groq/get/notice', { responseType: 'text' }).subscribe({
       next: (data) => {
         this.notice = { title: 'Notícia', content: data }; 
@@ -63,7 +67,11 @@ export class HomeComponentComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    if (this.stockEventSource) {
+      this.stockEventSource.close();
+    }
+  }
 
   updateDisplayedStocks(): void {
     const total = this.allStocks.length;

@@ -30,7 +30,6 @@ export class LoginComponentComponent {
         localStorage.setItem('userId', response.userId);
 
         this.router.navigate(['/user-painel']).then(() => {
-          // Atualiza a página após a navegação
           window.location.reload();
         });
       },
