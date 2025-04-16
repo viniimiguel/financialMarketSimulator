@@ -1,37 +1,51 @@
 <div class="buyAndSellContainer">
     <div class="buyStockContainer">
         <h1>Comprar Ações</h1>
-        <h2>Saldo Atual: 87.23$</h2>
-        <form action="/submit" method="post">
+        <h2>Saldo Atual: {{ currentBalance }}$</h2>
+        <form (submit)="buyStock()">
             <div class="inputs">
-                <label for="options">Escolha sua cripto:</label>
-                <select id="options" name="options">
-                    <option value="option1">AAPL 150.93</option>
-                    <option value="option2">TSLA 250.86</option>
-                    <option value="option3">ASSA3 53.43</option>
+                <label for="buyOptions">Escolha sua cripto:</label>
+                <select id="quantity" [(ngModel)]="selectedTicker" (change)="calculateTotalAmountToPay()" name="options">
+                    <option *ngFor="let stock of stocks" [value]="stock.ticker">
+                        {{ stock.ticker }} {{ stock.price }}$
+                    </option>
                 </select>
-                <label for="quantity">Escolha a quantidade:</label>
-                <input id="quantity" name="quantity" type="number" min="1" max="10" step="1" value="1">
+                <label for="buyQuantity">Escolha a quantidade:</label>
+                <input
+                    id="quantity"
+                    name="quantity"
+                    type="number"
+                    min="1"
+                    [(ngModel)]="quantity"
+                    (input)="calculateTotalAmountToPay()"
+                />
             </div>
-            <p class="value-to-pay">Valor a pagar: 150.93$</p>
+            <p class="value-to-pay">Valor a pagar: {{ totalAmountToPay | number: '1.2-2' }}$</p>
             <button id="btn" type="submit">Comprar</button>
         </form>
     </div>
     <div class="sellStockContainer">
         <h1>Vender Ações</h1>
-        <h2>Saldo Atual: 87.23$</h2>
-        <form action="/submit" method="post">
+        <h2>Saldo Atual: {{ currentBalance }}$</h2>
+        <form (submit)="sellStock()">
             <div class="inputs">
-                <label for="options">Escolha sua Ação:</label>
-                <select id="options" name="options">
-                    <option value="option1">AAPL 150.93$</option>
-                    <option value="option2">TSLA 250.86$</option>
-                    <option value="option3">ASSA3 53.43$</option>
+                <label for="sellOptions">Escolha sua Ação:</label>
+                <select id="quantity" [(ngModel)]="selectedTicker" (change)="calculateTotalAmountToReceive()" name="options">
+                    <option *ngFor="let stock of stocks" [value]="stock.ticker">
+                        {{ stock.ticker }} {{ stock.price }}$
+                    </option>
                 </select>
-                <label for="quantity">Escolha a quantidade:</label>
-                <input id="quantity" name="quantity" type="number" min="1" max="10" step="1" value="1">
+                <label for="sellQuantity">Escolha a quantidade:</label>
+                <input
+                    id="quantity"
+                    name="quantity"
+                    type="number"
+                    min="1"
+                    [(ngModel)]="quantity"
+                    (input)="calculateTotalAmountToReceive()"
+                />
             </div>
-            <p class="value-to-pay">Valor a Receber: 150.93$</p>
+            <p class="value-to-receive">Valor a Receber: {{ totalAmountToReceive | number: '1.2-2' }}$</p>
             <button id="btn" type="submit">Vender</button>
         </form>
     </div>
