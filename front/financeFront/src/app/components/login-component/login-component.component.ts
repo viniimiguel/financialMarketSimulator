@@ -28,7 +28,11 @@ export class LoginComponentComponent {
         localStorage.setItem('authToken', response.token);
         localStorage.setItem('userName', response.name);
         localStorage.setItem('userId', response.userId);
-        this.router.navigate(['/user-painel']);
+
+        this.router.navigate(['/user-painel']).then(() => {
+          // Atualiza a página após a navegação
+          window.location.reload();
+        });
       },
       error: (error) => {
         console.error('Erro no login:', error);

@@ -107,7 +107,7 @@ export class UserPainelComponentComponent implements OnInit, OnDestroy {
   }
 
   fetchWalletBalance(): void {
-    this.http.get<{ id: number; balance: number }>('http://localhost:8080/wallet/get/1').subscribe({
+    this.http.get<{ id: number; balance: number }>(`http://localhost:8080/wallet/get/${this.userId}`).subscribe({
       next: (data) => {
         this.currentBalance = data.balance;
         console.log('Saldo atual carregado:', this.currentBalance);

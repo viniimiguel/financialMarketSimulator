@@ -59,6 +59,15 @@
     background-color: #3E4451;
     color: #EDEDED;
   }
+  .btn-logout{
+    background-color: #2BB673;
+    color: #FFFFFF;
+    width: 80px;
+
+  }
+  .btn-logout:hover{
+    background-color: #249a60;
+  }
   
   .btn-login:hover {
     background-color: #4C525D;
