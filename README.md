@@ -8,12 +8,15 @@ Neste simulador, você poderá **comprar e vender ações** com o objetivo de **
 
 Freatures futuras:
 - Criação de mercado de criptomoedas
-- Criação de eventos ligados a noticias
-- Especificar países das ações
+- Tema claro
+- Recuperação de senha
 
 <h1>Front em desenvolvimento</h1>
 
-https://github.com/user-attachments/assets/06554523-8eda-4275-9f77-7042606361af
+
+https://github.com/user-attachments/assets/45c6d2e4-dad9-405b-a687-29a5264d0564
+
+
 
 
 ---
