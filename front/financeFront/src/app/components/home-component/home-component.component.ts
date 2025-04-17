@@ -30,19 +30,20 @@ export class HomeComponentComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.stockEventSource = new EventSource('http://localhost:8080/api/simulator/stock/random');
-    
+
     this.stockEventSource.onmessage = (event) => {
       const data = JSON.parse(event.data);
       console.log('Dados recebidos do SSE:', data);
-      
+
       if (Array.isArray(data)) {
         this.allStocks = data
-          .filter(stock => stock?.ticker && stock?.price != null && stock?.variation != null)
-          .map(stock => ({
-            ticker: stock.ticker,
-            price: stock.price,
-            variation: stock.variation
-          }));
+        .filter(stock => stock?.ticker && stock?.price != null && stock?.variation != null)
+        .map(stock => ({
+          ticker: stock.ticker,
+          price: stock.price,
+          variation: stock.variation
+        }))
+        .sort((a, b) => b.price - a.price); 
 
         console.log('Ações filtradas:', this.allStocks);
 
@@ -59,9 +60,17 @@ export class HomeComponentComponent implements OnInit, OnDestroy {
         this.stockEventSource.close();
       }
     };
+
     this.http.get('http://localhost:8080/api/groq/get/notice', { responseType: 'text' }).subscribe({
       next: (data) => {
-        this.notice = { title: 'Notícia', content: data }; 
+        const titleMatch = data.match(/\*\*(.*?)\*\*/);
+        const title = titleMatch ? titleMatch[1].trim() : 'Notícia';
+        const content = data
+          .replace(/\*\*(.*?)\*\*/, '')
+          .replace(/nn/g, '\n')       
+          .trim();
+
+        this.notice = { title, content };
       },
       error: (err) => console.error('Erro ao buscar notícia da API:', err)
     });

@@ -74,7 +74,7 @@ export class UserPainelComponentComponent implements OnInit, OnDestroy {
       next: (data) => {
         console.log('Dados da carteira:', data);
         this.myWallet = data;
-        this.fetchStockData(); // Fetch inicial antes do SSE
+        this.fetchStockData(); 
       },
       error: (err) => {
         console.error('Erro ao buscar dados da carteira:', err);
@@ -169,7 +169,11 @@ export class UserPainelComponentComponent implements OnInit, OnDestroy {
   fetchNotice(): void {
     this.http.get('http://localhost:8080/api/groq/get/notice', { responseType: 'text' }).subscribe({
       next: (data) => {
-        this.notice = { title: 'Notícia', content: data };
+        const cleanedContent = data.replace(/nn/g, '\n');
+        const titleMatch = cleanedContent.match(/\*\*(.*?)\*\*/);
+        const title = titleMatch ? titleMatch[1] : 'Notícia';
+        const content = cleanedContent.replace(/\*\*(.*?)\*\*/, '').trim();
+        this.notice = { title, content };
       },
       error: (err) => {
         console.error('Erro ao buscar notícia da API:', err);

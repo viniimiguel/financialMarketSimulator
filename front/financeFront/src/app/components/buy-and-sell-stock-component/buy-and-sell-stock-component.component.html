@@ -4,7 +4,7 @@
         <h2>Saldo Atual: {{ currentBalance }}$</h2>
         <form (submit)="buyStock()">
             <div class="inputs">
-                <label for="buyOptions">Escolha sua cripto:</label>
+                <label for="buyOptions">Escolha sua ação:</label>
                 <select id="quantity" [(ngModel)]="selectedTicker" (change)="calculateTotalAmountToPay()" name="options">
                     <option *ngFor="let stock of stocks" [value]="stock.ticker">
                         {{ stock.ticker }} {{ stock.price }}$
