@@ -11,6 +11,7 @@ import com.finance.finance.repository.MyStocksRepository;
 import com.finance.finance.repository.OrderRepository;
 import com.finance.finance.repository.UserRepository;
 import com.finance.finance.repository.WalletRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,6 +37,7 @@ public class OrderService {
         this.myStocksRepository = myStocksRepository;
     }
 
+    @Transactional
     public String buyStock(BuyStockDto dto) {
         User user = userRepository.findById(dto.userId())
                 .orElseThrow(() -> new RuntimeException("User Not Found"));
