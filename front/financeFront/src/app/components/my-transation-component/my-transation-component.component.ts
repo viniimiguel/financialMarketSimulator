@@ -16,42 +16,48 @@ interface Transaction {
   styleUrls: ['./my-transation-component.component.css']
 })
 export class MyTransationComponentComponent implements OnInit {
-  userId: string = '';
+  userId = '';
   transactions: Transaction[] = [];
+  currentPage = 1;
+  itemsPerPage = 10;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.fetchUserId();
-  }
-
-  fetchUserId(): void {
     const storedUserId = localStorage.getItem('userId');
     if (storedUserId) {
       this.userId = storedUserId;
-      console.log('ID do usuário carregado do localStorage:', this.userId);
       this.fetchTransactions();
-    } else {
-      console.warn('ID do usuário não encontrado no localStorage.');
     }
   }
 
   fetchTransactions(): void {
     this.http.get<any[]>(`http://localhost:8080/api/orders/get/${this.userId}`).subscribe({
-      next: (data) => {
-        console.log('Dados de transações recebidos:', data);
-        this.transactions = data.map((item) => ({
+      next: data => {
+        this.transactions = data.map(item => ({
           ticker: item.ticker ?? item.symbol ?? 'N/A',
           price: item.price,
           quantity: item.quantity,
           date: new Date(item.timestamp).toLocaleString(),
           type: item.type,
         }));
-        console.log('Transações formatadas:', this.transactions);
+        this.currentPage = 1;
       },
-      error: (err) => {
-        console.error('Erro ao buscar transações:', err);
-      }
+      error: err => console.error(err)
     });
+  }
+
+  get paginatedTransactions(): Transaction[] {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    return this.transactions.slice(start, start + this.itemsPerPage);
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.transactions.length / this.itemsPerPage);
+  }
+
+  goToPage(page: number): void {
+    if (page < 1 || page > this.totalPages) return;
+    this.currentPage = page;
   }
 }

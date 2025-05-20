@@ -1,23 +1,40 @@
 <div class="transaction-container">
     <h2>Minhas Transações</h2>
     <table class="transaction-table">
-        <thead>
-            <tr>
-                <th>Ticker</th>
-                <th>Preço</th>
-                <th>Quantidade</th>
-                <th>Data</th>
-                <th>Tipo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let transaction of transactions">
-                <td>{{ transaction.ticker }}</td>
-                <td>{{ transaction.price | currency:'BRL' }}</td>
-                <td>{{ transaction.quantity }}</td>
-                <td>{{ transaction.date }}</td>
-                <td>{{ transaction.type }}</td>
-            </tr>
-        </tbody>
+      <thead>
+        <tr>
+          <th>Ticker</th>
+          <th>Preço</th>
+          <th>Quantidade</th>
+          <th>Data</th>
+          <th>Tipo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let transaction of paginatedTransactions">
+          <td>{{ transaction.ticker }}</td>
+          <td>{{ transaction.price | currency:'BRL' }}</td>
+          <td>{{ transaction.quantity }}</td>
+          <td>{{ transaction.date }}</td>
+          <td>{{ transaction.type }}</td>
+        </tr>
+      </tbody>
     </table>
-</div>
+  
+    <nav *ngIf="totalPages > 1" class="pagination-container">
+      <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">
+        &laquo;
+      </button>
+      <button
+        *ngFor="let _ of [].constructor(totalPages); let i = index"
+        (click)="goToPage(i + 1)"
+        [class.active]="currentPage === i + 1"
+      >
+        {{ i + 1 }}
+      </button>
+      <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">
+        &raquo;
+      </button>
+    </nav>
+  </div>
+  

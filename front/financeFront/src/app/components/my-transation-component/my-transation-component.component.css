@@ -45,3 +45,29 @@
     background-color: #2C2C3E;
     transition: background-color 0.3s;
 }
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  .pagination-container button {
+    margin: 0 0.25rem;
+    padding: 0.5rem 0.75rem;
+    border: none;
+    color: white;
+    background: none;
+    cursor: pointer;
+  }
+  
+  .pagination-container button.active {
+    font-weight: bold;
+    color: #7F5AF0;
+    background: none;
+  }
+  
+  .pagination-container button[disabled] {
+    opacity: 0.5;
+    cursor: default;
+  }
